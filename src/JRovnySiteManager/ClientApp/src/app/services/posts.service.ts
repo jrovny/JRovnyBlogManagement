@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
+import { PostEdit } from '../models/post-edit';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,6 @@ export class PostsService {
   }
 
   getPostById(id: number) {
-    return this.http.get<Post>('/api/posts/' + id);
+    return this.http.get<PostEdit>('/api/posts/' + id);
   }
 }

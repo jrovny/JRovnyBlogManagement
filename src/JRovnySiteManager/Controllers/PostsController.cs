@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using JRovnySiteManager.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,19 @@ namespace JRovnySiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Post>> GetAllPostsAsync()
+        public async Task<List<PostSummary>> GetAllPostsAsync()
         {
-            return await _context.Posts.AsNoTracking().ToListAsync();
+            return await _context
+                .Posts
+                .AsNoTracking()
+                .Select(p => new PostSummary
+                {
+                    PostId = p.PostId, 
+                    Title = p.Title, 
+                    Slug = p.Slug, 
+                    CreatedDate = p.CreatedDate
+                })
+                .ToListAsync();
         }
 
         [HttpGet("{id}")]
