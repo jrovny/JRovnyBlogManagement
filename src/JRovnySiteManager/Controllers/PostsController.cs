@@ -16,9 +16,21 @@ namespace JRovnySiteManager.Controllers
             this._context = context;
         }
 
+        [HttpGet]
         public async Task<List<Post>> GetAllPostsAsync()
         {
             return await _context.Posts.AsNoTracking().ToListAsync();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByIdAsync(int id)
+        {
+            var post = await _context.Posts.AsNoTracking().FirstOrDefaultAsync(p => p.PostId == id);
+
+            if (post == null)
+                return NotFound();
+
+            return Ok(post);
         }
     }
 }

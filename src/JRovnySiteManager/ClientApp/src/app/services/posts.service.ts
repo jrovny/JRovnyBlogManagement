@@ -12,4 +12,8 @@ export class PostsService {
   getPosts() {
     return this.http.get<Post[]>('/api/posts');
   }
+
+  getPostById(id: number) {
+    return this.http.get<Post>('/api/posts/' + id);
+  }
 }
