@@ -14,11 +14,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { PostListComponent } from './components/post-list/post-list.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostListComponent
+    PostListComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,
