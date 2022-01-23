@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/post';
+import { ActivatedRoute } from '@angular/router';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -10,10 +10,12 @@ import { PostsService } from 'src/app/services/posts.service';
 export class PostEditComponent implements OnInit {
   post: any;
 
-  constructor(private postService: PostsService) { }
+  constructor(private postService: PostsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.postService.getPostById(1).subscribe(post => {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.postService.getPostById(id).subscribe(post => {
       console.log(post);
       this.post = post
     });
