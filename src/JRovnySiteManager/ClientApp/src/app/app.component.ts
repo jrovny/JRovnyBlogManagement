@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostsService } from './services/posts.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,7 @@ export class AppComponent {
     slug: 'slug'
   }];
   displayedColumns = ['title', 'slug'];
+  
+  constructor(private postsService: PostsService) {
+  }
 }
