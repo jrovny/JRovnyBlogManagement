@@ -1,6 +1,6 @@
 <div fxLayout="column" style="margin: 10px;">
   <div fxFlexAlign="end" style="margin-right: 15px;">
-    <button mat-mini-fab color="primary"><mat-icon>add</mat-icon></button>
+    <button mat-mini-fab color="primary" matTooltip="Create new blog post"><mat-icon>add</mat-icon></button>
   </div>
   <div class="table">
       <mat-table [dataSource]="dataSource" class="mat-elevation-z3">
@@ -17,7 +17,7 @@
           <mat-cell *matCellDef="let post">{{ post.createdDate | date:'M/d/yyyy' }}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="edit">
-          <mat-header-cell *matHeaderCellDef>Created </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
           <mat-cell *matCellDef="let post">
             <a mat-icon-button routerLink="#" color="primary">
               <mat-icon>edit</mat-icon>
