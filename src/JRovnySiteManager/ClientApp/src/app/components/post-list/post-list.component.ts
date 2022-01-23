@@ -9,7 +9,7 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class PostListComponent implements OnInit {
   dataSource: Post[] = [];
-  displayedColumns = ['title', 'slug', 'createdDate'];
+  displayedColumns = ['title', 'slug', 'createdDate', 'edit'];
 
   constructor(private postsService: PostsService) { }
 
