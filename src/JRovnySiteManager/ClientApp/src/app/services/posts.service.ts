@@ -1,19 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Post } from '../models/post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getPosts() {
-    return [
-      {
-        postId: 1,
-        title: 'Test',
-        slug: 'Test'
-      }
-    ];
+    return this.http.get<Post[]>('/api/posts');
   }
 }

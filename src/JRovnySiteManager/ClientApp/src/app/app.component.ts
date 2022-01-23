@@ -15,6 +15,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = this.postsService.getPosts();
+    this.postsService.getPosts().subscribe(posts => this.dataSource = posts);
   }
 }
