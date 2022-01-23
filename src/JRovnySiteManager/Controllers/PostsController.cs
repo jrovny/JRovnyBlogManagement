@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using JRovnySiteManager.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JRovnySiteManager.Controllers
 {
@@ -9,9 +10,15 @@ namespace JRovnySiteManager.Controllers
     [Route("api/[controller]")]
     public class PostsController : ControllerBase
     {
+        private readonly ApplicationDbContext _context;
+        public PostsController(ApplicationDbContext context)
+        {
+            this._context = context;
+        }
+
         public async Task<List<Post>> GetAllPostsAsync()
         {
-            return await Task.FromResult(new List<Post> { new Post { PostId = 1, Title = "Test", Slug = "test" } });
+            return await _context.Posts.AsNoTracking().ToListAsync();
         }
     }
 }
