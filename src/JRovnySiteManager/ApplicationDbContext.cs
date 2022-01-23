@@ -1,3 +1,4 @@
+using JRovnySiteManager.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -10,6 +11,8 @@ namespace JRovnySiteManager
         {
             _configuration = configuration;
         }
+
+        public DbSet<Post> Posts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
