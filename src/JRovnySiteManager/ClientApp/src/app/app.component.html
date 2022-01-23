@@ -8,6 +8,10 @@
       <mat-header-cell *matHeaderCellDef>Slug </mat-header-cell>
       <mat-cell *matCellDef="let post">{{ post.slug }}</mat-cell>
     </ng-container>
+    <ng-container matColumnDef="createdDate">
+      <mat-header-cell *matHeaderCellDef>Created </mat-header-cell>
+      <mat-cell *matCellDef="let post">{{ post.createdDate | date:'M/d/yyyy' }}</mat-cell>
+    </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>

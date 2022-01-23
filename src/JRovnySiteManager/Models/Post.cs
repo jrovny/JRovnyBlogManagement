@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JRovnySiteManager.Models
@@ -11,5 +12,7 @@ namespace JRovnySiteManager.Models
         public string Title { get; set; }
         [Column("slug")]
         public string Slug { get; set; }
+        [Column("created_date")]
+        public DateTime CreatedDate { get; set; }
     }
 }
