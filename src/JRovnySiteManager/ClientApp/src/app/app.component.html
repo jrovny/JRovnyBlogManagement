@@ -1,18 +1,1 @@
-<div class="table">
-  <mat-table [dataSource]="dataSource" class="mat-elevation-z3">
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
-      <mat-cell *matCellDef="let post">{{ post.title }}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="slug">
-      <mat-header-cell *matHeaderCellDef>Slug </mat-header-cell>
-      <mat-cell *matCellDef="let post">{{ post.slug }}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="createdDate">
-      <mat-header-cell *matHeaderCellDef>Created </mat-header-cell>
-      <mat-cell *matCellDef="let post">{{ post.createdDate | date:'M/d/yyyy' }}</mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-  </mat-table>
-</div>
+<app-post-list></app-post-list>
