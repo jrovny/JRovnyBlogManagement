@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { PostListComponent } from './components/post-list/post-list.component';
@@ -22,6 +23,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule,
+    MatIconModule,
     MatSidenavModule,
     MatTableModule
   ],
