@@ -1,1 +1,25 @@
-<p>image-list works!</p>
+<mat-selection-list [multiple]="false">
+  <mat-list-option
+    *ngFor="let image of images"
+    style="height: 100%; margin-bottom: 10px"
+  >
+    <div fxLayout="row" fxLayoutGap="5px">
+      <img
+        [src]="image.url"
+        [alt]="image.altName"
+        width="160px"
+        height="120px"
+      />
+      <div>
+        <div>{{ image.fileName }}</div>
+        <div>{{ image.altName }}</div>
+      </div>
+    </div>
+  </mat-list-option>
+</mat-selection-list>
+
+<!-- <mat-grid-list cols="4" rowHeight="100">
+  <mat-grid-tile *ngFor="let image of images">
+    <img [src]="image.url" [alt]="image.altName" />
+  </mat-grid-tile>
+</mat-grid-list> -->

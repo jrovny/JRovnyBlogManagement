@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from 'src/app/services/posts.service';
+import { ImageListComponent } from '../image-list/image-list.component';
 
 @Component({
   selector: 'app-post-edit',
@@ -20,7 +22,8 @@ export class PostEditComponent implements OnInit {
   constructor(
     private postService: PostsService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -35,11 +38,13 @@ export class PostEditComponent implements OnInit {
         published: post.published,
       });
     });
-
-    // console.log(this.form.value);
   }
 
   getContentHtml() {
     return this.form.get('content')?.value;
+  }
+
+  openImageSelectDialog() {
+    this.dialog.open(ImageListComponent);
   }
 }

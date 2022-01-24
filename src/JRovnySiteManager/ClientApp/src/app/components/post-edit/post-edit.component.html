@@ -13,10 +13,15 @@
       <mat-label>Slug</mat-label>
       <input matInput type="text" formControlName="slug" />
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Image</mat-label>
-      <input matInput type="text" formControlName="image" />
-    </mat-form-field>
+    <div fxLayout="row">
+      <mat-form-field>
+        <mat-label>Image</mat-label>
+        <input matInput type="text" formControlName="image" />
+      </mat-form-field>
+      <button mat-raised-button (click)="openImageSelectDialog()">
+        Select Image
+      </button>
+    </div>
     <mat-checkbox formControlName="published">Published</mat-checkbox>
     <mat-form-field>
       <mat-label>Content</mat-label>
