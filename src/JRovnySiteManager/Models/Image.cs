@@ -13,5 +13,9 @@ namespace JRovnySiteManager.Models
         public string OriginalFileName { get; set; }
         [Column("active")]
         public bool Active { get; set; }
+        [Column("alt_name")]
+        public string AltName { get; set; }
+        [Column("url")]
+        public string Url { get; set; }
     }
 }
