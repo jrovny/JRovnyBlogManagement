@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,7 +25,12 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { ImageListComponent } from './components/image-list/image-list.component';
 
 @NgModule({
-  declarations: [AppComponent, PostListComponent, PostEditComponent, ImageListComponent],
+  declarations: [
+    AppComponent,
+    PostListComponent,
+    PostEditComponent,
+    ImageListComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,6 +41,7 @@ import { ImageListComponent } from './components/image-list/image-list.component
     MatButtonModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatDividerModule,
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
