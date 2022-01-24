@@ -21,9 +21,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
+import { ImageListComponent } from './components/image-list/image-list.component';
 
 @NgModule({
-  declarations: [AppComponent, PostListComponent, PostEditComponent],
+  declarations: [AppComponent, PostListComponent, PostEditComponent, ImageListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
