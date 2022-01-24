@@ -13,6 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -34,6 +35,7 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
+    MatListModule,
     MatSidenavModule,
     MatTableModule,
     MatTooltipModule,
