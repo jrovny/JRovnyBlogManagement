@@ -13,6 +13,7 @@ namespace JRovnySiteManager
         }
 
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {

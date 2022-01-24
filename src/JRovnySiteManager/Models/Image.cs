@@ -1,0 +1,17 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace JRovnySiteManager.Models
+{
+    [Table("image")]
+    public class Image
+    {
+        [Column("image_id")]
+        public int ImageId { get; set; }
+        [Column("file_name")]
+        public string FileName { get; set; }
+        [Column("original_file_name")]
+        public string OriginalFileName { get; set; }
+        [Column("active")]
+        public bool Active { get; set; }
+    }
+}
