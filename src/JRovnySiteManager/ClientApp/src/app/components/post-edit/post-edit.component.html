@@ -1,29 +1,39 @@
-<div style="margin: 15px">
+<div style="margin: 15px 250px">
   <form
     [formGroup]="form"
     fxLayout="column"
     style="padding: 15px"
     class="mat-elevation-z3"
   >
-    <mat-form-field>
-      <mat-label>Title</mat-label>
-      <input matInput type="text" formControlName="title" />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Slug</mat-label>
-      <input matInput type="text" formControlName="slug" />
-    </mat-form-field>
-    <div fxLayout="row">
-      <mat-form-field>
-        <mat-label>Image</mat-label>
-        <input matInput type="text" formControlName="image" />
+    <div fxLayout="row" fxLayoutGap="10px" style="width: 100%">
+      <mat-form-field style="width: 100%">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title" />
       </mat-form-field>
-      <button mat-raised-button (click)="openImageSelectDialog()">
-        Select Image
+      <mat-form-field style="width: 100%">
+        <mat-label>Slug</mat-label>
+        <input matInput type="text" formControlName="slug" />
+      </mat-form-field>
+      <mat-checkbox formControlName="published" fxFlexAlign="center"
+        >Published</mat-checkbox
+      >
+    </div>
+    <div fxLayout="row">
+      <img
+        [src]="getImageSrc()"
+        alt="Selected image"
+        width="160px"
+        height="120px"
+      />
+      <button
+        mat-icon-button
+        (click)="openImageSelectDialog()"
+        fxFlexAlign="end"
+      >
+        <mat-icon>image</mat-icon>
       </button>
     </div>
-    <mat-checkbox formControlName="published">Published</mat-checkbox>
-    <mat-form-field>
+    <mat-form-field style="margin-top: 15px">
       <mat-label>Content</mat-label>
       <textarea
         matInput

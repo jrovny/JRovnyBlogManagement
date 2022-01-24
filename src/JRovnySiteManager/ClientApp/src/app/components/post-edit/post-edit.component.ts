@@ -44,6 +44,10 @@ export class PostEditComponent implements OnInit {
     return this.form.get('content')?.value;
   }
 
+  getImageSrc() {
+    return this.form.get('image')?.value;
+  }
+
   openImageSelectDialog() {
     this.dialog.open(ImageListComponent);
   }
