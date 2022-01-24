@@ -27,11 +27,13 @@
         style="height: 10rem"
       ></textarea>
     </mat-form-field>
-    <p>Blog Post Preview:</p>
+  </form>
+  <div *ngIf="getContentHtml()">
+    <p style="margin-top: 15px">Blog Post Preview:</p>
     <p
       [innerHtml]="getContentHtml()"
       class="mat-elevation-z3"
       style="padding: 10px"
     ></p>
-  </form>
+  </div>
 </div>
