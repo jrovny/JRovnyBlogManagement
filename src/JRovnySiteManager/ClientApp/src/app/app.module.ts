@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,6 +30,7 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
     FlexLayoutModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
