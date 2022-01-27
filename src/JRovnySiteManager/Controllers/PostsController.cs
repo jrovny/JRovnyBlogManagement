@@ -1,4 +1,5 @@
-﻿using JRovnySiteManager.Data;
+﻿using AutoMapper;
+using JRovnySiteManager.Data;
 using JRovnySiteManager.Data.EntityFramework.Models;
 using JRovnySiteManager.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,8 +13,10 @@ namespace JRovnySiteManager.Controllers
     public class PostsController : ControllerBase
     {
         private readonly PostsDataProvider _dataProvider;
-        public PostsController(PostsDataProvider dataProvider)
+        private readonly IMapper _mapper;
+        public PostsController(PostsDataProvider dataProvider, IMapper mapper)
         {
+            _mapper = mapper;
             _dataProvider = dataProvider;
         }
 
