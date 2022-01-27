@@ -19,5 +19,13 @@ namespace JRovnySiteManager.Data.EntityFramework
         {
             builder.UseNpgsql(_configuration.GetConnectionString("Default"));
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Models.Post>()
+                .HasOne(p => p.ImageObject)
+                .WithMany(i => i.Posts)
+                .HasForeignKey(p => p.ImageId);
+        }
     }
 }

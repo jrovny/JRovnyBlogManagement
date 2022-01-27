@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JRovnySiteManager.Data.EntityFramework.Models
@@ -6,6 +7,14 @@ namespace JRovnySiteManager.Data.EntityFramework.Models
     [Table("post")]
     public class Post
     {
+        public Post()
+        {
+            ImageObject = new Image();
+        }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         [Column("post_id")]
         public int PostId { get; set; }
         [Column("title")]
@@ -22,5 +31,8 @@ namespace JRovnySiteManager.Data.EntityFramework.Models
         public DateTime? PublishedDate { get; set; }
         [Column("created_date")]
         public DateTime CreatedDate { get; set; }
+        [Column("image_id")]
+        public int ImageId { get; set; }
+        public Image ImageObject { get; set; }
     }
 }

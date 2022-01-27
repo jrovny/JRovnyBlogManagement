@@ -32,9 +32,25 @@ namespace JRovnySiteManager.Data
         }
 
 
-        public async Task<Post> GetByIdAsync(int id)
+        public async Task<Data.Models.PostDetailView> GetByIdAsync(int id)
         {
-            return await _context.Posts.AsNoTracking().FirstOrDefaultAsync(p => p.PostId == id);
+            return await _context
+                .Posts
+                .AsNoTracking()
+                .Include(p => p.ImageObject)
+                .Where(p => p.PostId == id)
+                .Select(p => new Data.Models.PostDetailView
+                {
+                    PostId = p.PostId,
+                    Title = p.Title,
+                    Slug = p.Slug,
+                    Content = p.Content,
+                    CreatedDate = p.CreatedDate,
+                    Image = p.ImageObject.Url,
+                    Published = p.Published,
+                    PublishedDate = p.PublishedDate
+                })
+                .FirstOrDefaultAsync();
         }
 
         public async Task<Post> UpdateAsync(Post post)

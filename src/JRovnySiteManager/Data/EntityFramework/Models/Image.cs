@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JRovnySiteManager.Data.EntityFramework.Models
@@ -5,6 +7,13 @@ namespace JRovnySiteManager.Data.EntityFramework.Models
     [Table("image")]
     public class Image
     {
+        public Image()
+        {
+            Posts = new List<Post>();
+        }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("image_id")]
         public int ImageId { get; set; }
         [Column("file_name")]
@@ -17,5 +26,6 @@ namespace JRovnySiteManager.Data.EntityFramework.Models
         public string AltName { get; set; }
         [Column("url")]
         public string Url { get; set; }
+        public List<Post> Posts { get; set; }
     }
 }
