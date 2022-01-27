@@ -29,7 +29,7 @@ namespace JRovnySiteManager.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var post = await _dataProvider.GetByIdAsync(id);
+            var post = _mapper.Map<Models.PostDetailView>(await _dataProvider.GetByIdAsync(id));
 
             if (post == null)
                 return NotFound();
