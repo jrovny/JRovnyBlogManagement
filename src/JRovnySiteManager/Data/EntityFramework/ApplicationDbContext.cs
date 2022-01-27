@@ -1,4 +1,4 @@
-using JRovnySiteManager.Models;
+using JRovnySiteManager.Data.EntityFramework.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

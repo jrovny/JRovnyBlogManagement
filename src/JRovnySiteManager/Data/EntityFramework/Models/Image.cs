@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace JRovnySiteManager.Models
+namespace JRovnySiteManager.Data.EntityFramework.Models
 {
     [Table("image")]
     public class Image

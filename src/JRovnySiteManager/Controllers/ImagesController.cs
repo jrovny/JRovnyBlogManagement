@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using JRovnySiteManager.Data.EntityFramework;
-using JRovnySiteManager.Models;
+using JRovnySiteManager.Data.EntityFramework.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

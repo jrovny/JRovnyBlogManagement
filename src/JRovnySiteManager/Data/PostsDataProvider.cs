@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JRovnySiteManager.Data.EntityFramework;
+using JRovnySiteManager.Data.EntityFramework.Models;
 using JRovnySiteManager.Models;
 using Microsoft.EntityFrameworkCore;
 
