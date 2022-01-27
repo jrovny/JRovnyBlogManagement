@@ -1,3 +1,4 @@
+using JRovnySiteManager.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,7 @@ namespace JRovnySiteManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>();
+            services.AddTransient<PostsDataProvider>();
             services.AddControllersWithViews();
             services.AddSpaStaticFiles(configuration =>
             {
