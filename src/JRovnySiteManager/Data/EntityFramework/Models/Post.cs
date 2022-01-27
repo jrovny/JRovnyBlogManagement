@@ -9,7 +9,7 @@ namespace JRovnySiteManager.Data.EntityFramework.Models
     {
         public Post()
         {
-            ImageObject = new Image();
+            Image = new Image();
         }
 
         [Key]
@@ -31,6 +31,6 @@ namespace JRovnySiteManager.Data.EntityFramework.Models
         public DateTime CreatedDate { get; set; }
         [Column("image_id")]
         public int ImageId { get; set; }
-        public Image ImageObject { get; set; }
+        public Image Image { get; set; }
     }
 }

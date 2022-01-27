@@ -37,7 +37,7 @@ namespace JRovnySiteManager.Data
             return await _context
                 .Posts
                 .AsNoTracking()
-                .Include(p => p.ImageObject)
+                .Include(p => p.Image)
                 .Where(p => p.PostId == id)
                 .Select(p => new Data.Models.PostDetailView
                 {
@@ -46,7 +46,7 @@ namespace JRovnySiteManager.Data
                     Slug = p.Slug,
                     Content = p.Content,
                     CreatedDate = p.CreatedDate,
-                    Image = p.ImageObject.Url,
+                    Image = p.Image.Url,
                     Published = p.Published,
                     PublishedDate = p.PublishedDate
                 })

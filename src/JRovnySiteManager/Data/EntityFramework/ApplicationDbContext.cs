@@ -23,7 +23,7 @@ namespace JRovnySiteManager.Data.EntityFramework
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Models.Post>()
-                .HasOne(p => p.ImageObject)
+                .HasOne(p => p.Image)
                 .WithMany(i => i.Posts)
                 .HasForeignKey(p => p.ImageId);
         }
