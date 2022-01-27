@@ -1,19 +1,17 @@
 <div fxLayout="row" fxLayoutGap="20px" style="height: 100%; padding: 15px">
-  <mat-card fxFlex>
-    <form [formGroup]="form" fxLayout="column">
-      <div fxLayout="row" fxLayoutGap="10px" style="width: 100%">
-        <mat-form-field style="width: 100%">
-          <mat-label>Title</mat-label>
-          <input matInput type="text" formControlName="title" />
-        </mat-form-field>
-        <mat-form-field style="width: 100%">
-          <mat-label>Slug</mat-label>
-          <input matInput type="text" formControlName="slug" />
-        </mat-form-field>
-        <mat-checkbox formControlName="published" fxFlexAlign="center"
-          >Published</mat-checkbox
-        >
-      </div>
+  <form [formGroup]="form" fxFlex>
+    <mat-card fxLayout="column" style="height: 100%">
+      <mat-form-field style="width: 100%">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title" />
+      </mat-form-field>
+      <mat-form-field style="width: 100%">
+        <mat-label>Slug</mat-label>
+        <input matInput type="text" formControlName="slug" />
+      </mat-form-field>
+      <mat-checkbox formControlName="published" style="margin-bottom: 15px"
+        >Published</mat-checkbox
+      >
       <div fxLayout="row">
         <img
           [src]="getImageSrc()"
@@ -42,9 +40,9 @@
         <button mat-button>Back</button>
         <button mat-raised-button color="primary">Save</button>
       </div>
-    </form>
-  </mat-card>
-  <mat-card *ngIf="getContentHtml()" fxFlex>
+    </mat-card>
+  </form>
+  <mat-card *ngIf="getContentHtml()" fxFlex style="overflow: auto">
     <p [innerHtml]="getContentHtml()" style="height: 100%"></p>
   </mat-card>
 </div>
