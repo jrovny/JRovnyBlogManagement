@@ -21,9 +21,9 @@ namespace JRovnySiteManager.Controllers
         }
 
         [HttpGet]
-        public async Task<List<PostSummary>> GetAllPostsAsync()
+        public async Task<IEnumerable<Models.PostSummary>> GetAllPostsAsync()
         {
-            return await _dataProvider.GetAllPostsAsync();
+            return _mapper.Map<IEnumerable<Models.PostSummary>>(await _dataProvider.GetAllPostsAsync());
         }
 
         [HttpGet("{id}")]

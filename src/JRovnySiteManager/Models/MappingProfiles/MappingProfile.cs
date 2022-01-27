@@ -8,6 +8,7 @@ namespace JRovnySiteManager.Models.MappingProfiles
         {
             CreateMap<Data.EntityFramework.Models.Image, Models.Image>();
             CreateMap<Data.Models.PostDetailView, Models.PostDetailView>();
+            CreateMap<Data.Models.PostSummary, Models.PostSummary>();
         }
     }
 }
