@@ -2,7 +2,7 @@ using JRovnySiteManager.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace JRovnySiteManager
+namespace JRovnySiteManager.Data.EntityFramework
 {
     public class ApplicationDbContext : DbContext
     {
