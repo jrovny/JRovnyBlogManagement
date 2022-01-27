@@ -20,6 +20,7 @@ namespace JRovnySiteManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>();
+            services.AddAutoMapper(typeof(Startup));
             services.AddTransient<PostsDataProvider>();
             services.AddTransient<ImagesDataProvider>();
             services.AddControllersWithViews();
