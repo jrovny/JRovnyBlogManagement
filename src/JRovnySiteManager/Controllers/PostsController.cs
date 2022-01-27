@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using JRovnySiteManager.Data;
 using JRovnySiteManager.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace JRovnySiteManager.Controllers
 {
@@ -11,32 +10,22 @@ namespace JRovnySiteManager.Controllers
     [Route("api/[controller]")]
     public class PostsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public PostsController(ApplicationDbContext context)
+        private readonly PostsDataProvider _dataProvider;
+        public PostsController(PostsDataProvider dataProvider)
         {
-            this._context = context;
+            _dataProvider = dataProvider;
         }
 
         [HttpGet]
         public async Task<List<PostSummary>> GetAllPostsAsync()
         {
-            return await _context
-                .Posts
-                .AsNoTracking()
-                .Select(p => new PostSummary
-                {
-                    PostId = p.PostId,
-                    Title = p.Title,
-                    Slug = p.Slug,
-                    CreatedDate = p.CreatedDate
-                })
-                .ToListAsync();
+            return await _dataProvider.GetAllPostsAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var post = await _context.Posts.AsNoTracking().FirstOrDefaultAsync(p => p.PostId == id);
+            var post = await _dataProvider.GetByIdAsync(id);
 
             if (post == null)
                 return NotFound();
@@ -47,8 +36,7 @@ namespace JRovnySiteManager.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(Post post)
         {
-            _context.Update(post);
-            await _context.SaveChangesAsync();
+            await _dataProvider.UpdateAsync(post);
 
             return Ok();
         }
