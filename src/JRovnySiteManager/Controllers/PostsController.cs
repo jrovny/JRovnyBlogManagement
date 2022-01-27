@@ -25,9 +25,9 @@ namespace JRovnySiteManager.Controllers
                 .AsNoTracking()
                 .Select(p => new PostSummary
                 {
-                    PostId = p.PostId, 
-                    Title = p.Title, 
-                    Slug = p.Slug, 
+                    PostId = p.PostId,
+                    Title = p.Title,
+                    Slug = p.Slug,
                     CreatedDate = p.CreatedDate
                 })
                 .ToListAsync();
@@ -42,6 +42,15 @@ namespace JRovnySiteManager.Controllers
                 return NotFound();
 
             return Ok(post);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAsync(Post post)
+        {
+            _context.Update(post);
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
     }
 }

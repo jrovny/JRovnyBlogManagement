@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { PostEdit } from 'src/app/models/post-edit';
 import { PostsService } from 'src/app/services/posts.service';
 import { ImageListComponent } from '../image-list/image-list.component';
 
@@ -18,6 +19,7 @@ export class PostEditComponent implements OnInit {
     slug: [''],
     published: [false, Validators.required],
   });
+  id: number = 0;
 
   constructor(
     private postService: PostsService,
@@ -27,9 +29,9 @@ export class PostEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.postService.getPostById(id).subscribe((post) => {
+    this.postService.getPostById(this.id).subscribe((post) => {
       this.form.setValue({
         title: post.title,
         content: post.content,
@@ -50,5 +52,21 @@ export class PostEditComponent implements OnInit {
 
   openImageSelectDialog() {
     this.dialog.open(ImageListComponent);
+  }
+
+  save() {
+    const formModel = this.form.value;
+    const post: PostEdit = {
+      postId: this.id,
+      title: formModel.title,
+      slug: formModel.slug,
+      createdDate: new Date(2022, 1, 1),
+      content: formModel.content,
+      image: formModel.image,
+      published: formModel.published,
+      publishedDate: formModel.publishedDate,
+    };
+
+    this.postService.savePost(post);
   }
 }

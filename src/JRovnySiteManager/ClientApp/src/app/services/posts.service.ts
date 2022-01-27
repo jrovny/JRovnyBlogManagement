@@ -21,4 +21,8 @@ export class PostsService {
   getImages() {
     return this.http.get<Image>('/api/images');
   }
+
+  savePost(post: Post) {
+    this.http.put(`/api/posts/${post.postId}`, post).subscribe();
+  }
 }
