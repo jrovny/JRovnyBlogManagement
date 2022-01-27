@@ -21,8 +21,6 @@ namespace JRovnySiteManager.Data.EntityFramework.Models
         public string Title { get; set; }
         [Column("content")]
         public string Content { get; set; }
-        [Column("image")]
-        public string Image { get; set; }
         [Column("slug")]
         public string Slug { get; set; }
         [Column("published")]
