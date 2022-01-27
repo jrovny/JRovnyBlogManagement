@@ -1,7 +1,6 @@
-using JRovnySiteManager.Data.EntityFramework;
+using JRovnySiteManager.Data;
 using JRovnySiteManager.Data.EntityFramework.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,15 +10,15 @@ namespace JRovnySiteManager.Controllers
     [Route("api/[controller]")]
     public class ImagesController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public ImagesController(ApplicationDbContext context)
+        private readonly ImagesDataProvider _dataProvider;
+        public ImagesController(ImagesDataProvider dataProvider)
         {
-            _context = context;
+            _dataProvider = dataProvider;
         }
 
         public async Task<IEnumerable<Image>> GetAllAsync()
         {
-            return await _context.Images.AsNoTracking().ToListAsync();
+            return await _dataProvider.GetAllAsync();
         }
     }
 }

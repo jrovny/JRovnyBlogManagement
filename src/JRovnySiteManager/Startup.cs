@@ -21,6 +21,7 @@ namespace JRovnySiteManager
         {
             services.AddDbContext<ApplicationDbContext>();
             services.AddTransient<PostsDataProvider>();
+            services.AddTransient<ImagesDataProvider>();
             services.AddControllersWithViews();
             services.AddSpaStaticFiles(configuration =>
             {
