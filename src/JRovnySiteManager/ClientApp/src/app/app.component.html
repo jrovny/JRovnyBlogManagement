@@ -4,11 +4,12 @@
   </button></mat-toolbar
 >
 <mat-sidenav-container class="sidenavContainer">
-  <mat-sidenav
-    [opened]="sidenavOpened"
-    mode="side"
-    class="sidenav"
-  ></mat-sidenav>
+  <mat-sidenav [opened]="sidenavOpened" mode="side" class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">Posts</a>
+      <a mat-list-item routerLink="/">Images</a>
+    </mat-nav-list>
+  </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
