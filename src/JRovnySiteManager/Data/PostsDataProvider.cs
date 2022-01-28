@@ -37,6 +37,7 @@ namespace JRovnySiteManager.Data
                 .Posts
                 .AsNoTracking()
                 .Include(p => p.Image)
+                .DefaultIfEmpty()
                 .Where(p => p.PostId == id)
                 .Select(p => new Data.Models.PostDetailView
                 {
