@@ -52,25 +52,22 @@
           </button>
         </div> -->
         <div fxFlex style="height: 100%">
-          <mat-form-field style="margin-top: 15px; width: 100%">
-            <mat-label>Content</mat-label>
-            <textarea
-              matInput
-              cdkTextareaAutosize
-              cdkAutosizeMinRows="29"
-              cdkAutosizeMaxRows="29"
-              type="text"
-              formControlName="content"
-            ></textarea>
-          </mat-form-field>
+          <!-- <mat-form-field style="margin-top: 15px; width: 100%"> -->
+          <!-- <mat-label>Content</mat-label> -->
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="26"
+            cdkAutosizeMaxRows="26"
+            type="text"
+            formControlName="content"
+          ></textarea>
+          <!-- </mat-form-field> -->
         </div>
         <div *ngIf="getContentHtml()" style="overflow: auto" fxFlex>
           <p
             [innerHtml]="getContentHtml()"
             style="
-              height: 100%;
-              width: 100%;
-              margin-top: 15px;
               border-left: 1px solid rgba(0, 0, 0, 0.12);
               padding-left: 10px;
             "
