@@ -1,48 +1,71 @@
-<div fxLayout="row" fxLayoutGap="20px" style="height: 100%; padding: 15px">
+<div fxLayoutGap="20px" style="height: 100%; padding: 15px">
   <form [formGroup]="form" fxFlex (ngSubmit)="save()">
-    <mat-card fxLayout="column" style="height: 100%">
-      <mat-form-field style="width: 100%">
-        <mat-label>Title</mat-label>
-        <input matInput type="text" formControlName="title" />
-      </mat-form-field>
-      <mat-form-field style="width: 100%">
-        <mat-label>Slug</mat-label>
-        <input matInput type="text" formControlName="slug" />
-      </mat-form-field>
-      <mat-checkbox formControlName="published" style="margin-bottom: 15px"
-        >Published</mat-checkbox
-      >
-      <div fxLayout="row">
-        <img
-          [src]="getImageSrc()"
-          alt="Selected image"
-          width="160px"
-          height="120px"
-        />
-        <button
-          mat-icon-button
-          (click)="openImageSelectDialog()"
-          fxFlexAlign="end"
-        >
-          <mat-icon>image</mat-icon>
-        </button>
+    <div fxLayout="column" style="height: 100%">
+      <div>
+        <mat-form-field style="width: 100%">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" formControlName="title" />
+        </mat-form-field>
+        <div fxLayout="row">
+          <mat-form-field style="width: 100%; margin-right: 10px">
+            <mat-label>Slug</mat-label>
+            <input matInput type="text" formControlName="slug" />
+          </mat-form-field>
+          <mat-checkbox
+            formControlName="published"
+            style="margin-bottom: 15px"
+            fxFlexAlign="end"
+            >Published</mat-checkbox
+          >
+        </div>
       </div>
-      <mat-form-field style="margin-top: 15px">
-        <mat-label>Content</mat-label>
-        <textarea
-          matInput
-          type="text"
-          formControlName="content"
-          style="height: 10rem"
-        ></textarea>
-      </mat-form-field>
-      <div align="end">
-        <button mat-button type="button">Back</button>
-        <button mat-raised-button color="primary" type="submit">Save</button>
+      <div fxLayout="row" fxLayoutGap="10px" fxFlex style="overflow: hidden">
+        <!-- <div fxLayout="row">
+          <img
+            [src]="getImageSrc()"
+            alt="Selected image"
+            width="160px"
+            height="120px"
+          />
+          <button
+            mat-icon-button
+            (click)="openImageSelectDialog()"
+            fxFlexAlign="end"
+          >
+            <mat-icon>image</mat-icon>
+          </button>
+        </div> -->
+        <div fxFlex style="height: 100%">
+          <mat-form-field style="margin-top: 15px; width: 100%">
+            <mat-label>Content</mat-label>
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="29"
+              cdkAutosizeMaxRows="29"
+              type="text"
+              formControlName="content"
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <div *ngIf="getContentHtml()" style="overflow: auto" fxFlex>
+          <p
+            [innerHtml]="getContentHtml()"
+            style="
+              height: 100%;
+              width: 100%;
+              margin-top: 15px;
+              border-left: 1px solid rgba(0, 0, 0, 0.12);
+              padding-left: 10px;
+            "
+          ></p>
+        </div>
+
+        <!-- <div align="end">
+          <button mat-button type="button">Back</button>
+          <button mat-raised-button color="primary" type="submit">Save</button>
+        </div> -->
       </div>
-    </mat-card>
+    </div>
   </form>
-  <mat-card *ngIf="getContentHtml()" fxFlex style="overflow: auto">
-    <p [innerHtml]="getContentHtml()" style="height: 100%"></p>
-  </mat-card>
 </div>
