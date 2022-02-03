@@ -20,6 +20,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -53,6 +54,7 @@ import { ImageListComponent } from './components/image-list/image-list.component
     MatListModule,
     MatSidenavModule,
     MatTableModule,
+    TextFieldModule,
     MatToolbarModule,
     MatTooltipModule,
   ],
