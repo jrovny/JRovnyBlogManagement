@@ -64,14 +64,12 @@
           ></textarea>
           <!-- </mat-form-field> -->
         </div>
-        <div *ngIf="getContentHtml()" style="overflow: auto" fxFlex>
-          <p
-            [innerHtml]="getContentHtml()"
-            style="
-              border-left: 1px solid rgba(0, 0, 0, 0.12);
-              padding-left: 10px;
-            "
-          ></p>
+        <div
+          *ngIf="getContentHtml()"
+          style="overflow: auto; border-left: 1px solid rgba(0, 0, 0, 0.12)"
+          fxFlex
+        >
+          <p [innerHtml]="getContentHtml()" style="padding-left: 10px"></p>
         </div>
       </div>
     </div>
