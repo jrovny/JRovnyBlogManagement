@@ -30,7 +30,7 @@ namespace JRovnySiteManager.Data.EntityFramework.Models
         [Column("created_date")]
         public DateTime CreatedDate { get; set; }
         [Column("image_id")]
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
         public Image Image { get; set; }
     }
 }
