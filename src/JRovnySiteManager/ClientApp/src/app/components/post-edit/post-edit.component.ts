@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostEdit } from 'src/app/models/post-edit';
 import { PostsService } from 'src/app/services/posts.service';
 import { ImageListComponent } from '../image-list/image-list.component';
@@ -25,7 +25,8 @@ export class PostEditComponent implements OnInit {
     private postService: PostsService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -68,5 +69,9 @@ export class PostEditComponent implements OnInit {
     };
 
     this.postService.savePost(post);
+  }
+
+  goBack() {
+    this.router.navigate(['']);
   }
 }
