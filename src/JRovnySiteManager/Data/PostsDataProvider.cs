@@ -27,6 +27,7 @@ namespace JRovnySiteManager.Data
                     Slug = p.Slug,
                     CreatedDate = p.CreatedDate
                 })
+                .OrderByDescending(p => p.PostId)
                 .ToListAsync();
         }
 
@@ -60,6 +61,5 @@ namespace JRovnySiteManager.Data
 
             return post;
         }
-
     }
 }
