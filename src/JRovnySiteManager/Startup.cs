@@ -23,6 +23,7 @@ namespace JRovnySiteManager
             services.AddAutoMapper(typeof(Startup));
             services.AddTransient<PostsDataProvider>();
             services.AddTransient<ImagesDataProvider>();
+            services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             services.AddControllersWithViews();
             services.AddSpaStaticFiles(configuration =>
             {
