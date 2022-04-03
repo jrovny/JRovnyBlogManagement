@@ -6,14 +6,10 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/JRovnySiteManager/bin/Debug/net5.0/JRovnySiteManager.dll",
+            "program": "${workspaceFolder}/src/JRovnySiteManager/bin/Debug/net6.0/JRovnySiteManager.dll",
             "args": [],
             "cwd": "${workspaceFolder}/src/JRovnySiteManager",
             "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
