@@ -20,14 +20,15 @@ namespace JRovnySiteManager
             builder.Services.AddControllersWithViews();
             builder.Services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "dist";
             });
 
             var app = builder.Build();
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
-            app.UseStaticFiles();
+            // app.UseStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseRouting();
 
