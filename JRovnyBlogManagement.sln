@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E5C3030-10FA-46DE-B3FD-D6D7638247E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JRovnySiteManager", "src\JRovnyBlogManagement\JRovnySiteManager.csproj", "{47D12620-AE03-4AFA-983F-35E737B12F66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JRovnyBlogManagement", "src\JRovnyBlogManagement\JRovnyBlogManagement.csproj", "{47D12620-AE03-4AFA-983F-35E737B12F66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

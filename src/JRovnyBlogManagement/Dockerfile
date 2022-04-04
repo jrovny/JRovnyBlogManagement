@@ -16,18 +16,18 @@ RUN npm run-script publish
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
-COPY ["./JRovnySiteManager.csproj", "src/"]
-RUN dotnet restore "src/JRovnySiteManager.csproj"
+COPY ["./JRovnyBlogManagement.csproj", "src/"]
+RUN dotnet restore "src/JRovnyBlogManagement.csproj"
 COPY . .
 WORKDIR "/src"
-RUN dotnet build "JRovnySiteManager.csproj" -c Release -o /app/build
+RUN dotnet build "JRovnyBlogManagement.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "JRovnySiteManager.csproj" -c Release -o /app/publish
+RUN dotnet publish "JRovnyBlogManagement.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY --from=client app/dist dist/
 ENV ASPNETCORE_URLS http://*:5001
-ENTRYPOINT ["dotnet", "JRovnySiteManager.dll"]
+ENTRYPOINT ["dotnet", "JRovnyBlogManagement.dll"]

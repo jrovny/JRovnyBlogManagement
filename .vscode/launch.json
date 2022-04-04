@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/JRovnyBlogManagement/bin/Debug/net6.0/JRovnySiteManager.dll",
+            "program": "${workspaceFolder}/src/JRovnyBlogManagement/bin/Debug/net6.0/JRovnyBlogManagement.dll",
             "args": [],
             "cwd": "${workspaceFolder}/src/JRovnyBlogManagement",
             "stopAtEntry": false,
@@ -28,7 +28,7 @@
             "request": "launch",
             "preLaunchTask": "docker-run: debug",
             "netCore": {
-                "appProject": "${workspaceFolder}/src/JRovnySiteManager/JRovnySiteManager.csproj"
+                "appProject": "${workspaceFolder}/src/JRovnyBlogManagement/JRovnyBlogManagement.csproj"
             }
         }
     ]

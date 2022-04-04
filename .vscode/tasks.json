@@ -7,7 +7,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/src/JRovnyBlogManagement/JRovnySiteManager.csproj",
+        "${workspaceFolder}/src/JRovnyBlogManagement/JRovnyBlogManagement.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -19,7 +19,7 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/src/JRovnyBlogManagement/JRovnySiteManager.csproj",
+        "${workspaceFolder}/src/JRovnyBlogManagement/JRovnyBlogManagement.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -32,7 +32,7 @@
       "args": [
         "watch",
         "run",
-        "${workspaceFolder}/src/JRovnyBlogManagement/JRovnySiteManager.csproj",
+        "${workspaceFolder}/src/JRovnyBlogManagement/JRovnyBlogManagement.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -45,14 +45,14 @@
         "build"
       ],
       "dockerBuild": {
-        "tag": "jrovnysitemanager:dev",
+        "tag": "jrovnyBlogmanagement:dev",
         "target": "base",
         "dockerfile": "${workspaceFolder}/src/JRovnyBlogManagement/Dockerfile",
         "context": "${workspaceFolder}",
         "pull": true
       },
       "netCore": {
-        "appProject": "${workspaceFolder}/src/JRovnyBlogManagement/JRovnySiteManager.csproj"
+        "appProject": "${workspaceFolder}/src/JRovnyBlogManagement/JRovnyBlogManagement.csproj"
       }
     },
     {
@@ -62,13 +62,13 @@
         "build"
       ],
       "dockerBuild": {
-        "tag": "jrovnysitemanager:latest",
+        "tag": "jrovnyBlogmanagement:latest",
         "dockerfile": "${workspaceFolder}/src/JRovnyBlogManagement/Dockerfile",
         "context": "${workspaceFolder}",
         "pull": true
       },
       "netCore": {
-        "appProject": "${workspaceFolder}/src/JRovnyBlogManagement/JRovnySiteManager.csproj"
+        "appProject": "${workspaceFolder}/src/JRovnyBlogManagement/JRovnyBlogManagement.csproj"
       }
     },
     {
@@ -79,7 +79,7 @@
       ],
       "dockerRun": {},
       "netCore": {
-        "appProject": "${workspaceFolder}/src/JRovnyBlogManagement/JRovnySiteManager.csproj",
+        "appProject": "${workspaceFolder}/src/JRovnyBlogManagement/JRovnyBlogManagement.csproj",
         "enableDebugging": true
       }
     },
@@ -91,7 +91,7 @@
       ],
       "dockerRun": {},
       "netCore": {
-        "appProject": "${workspaceFolder}/src/JRovnyBlogManagement/JRovnySiteManager.csproj"
+        "appProject": "${workspaceFolder}/src/JRovnyBlogManagement/JRovnyBlogManagement.csproj"
       }
     }
   ]
