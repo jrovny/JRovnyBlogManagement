@@ -10,6 +10,7 @@ namespace JRovny.BlogManagement.Data
     public class PostsDataProvider
     {
         private readonly ApplicationDbContext _context;
+
         public PostsDataProvider(ApplicationDbContext context)
         {
             _context = context;
