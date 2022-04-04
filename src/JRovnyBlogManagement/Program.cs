@@ -1,6 +1,6 @@
-using JRovnySiteManager;
-using JRovnySiteManager.Data;
-using JRovnySiteManager.Data.EntityFramework;
+using JRovny.BlogManagement;
+using JRovny.BlogManagement.Data;
+using JRovny.BlogManagement.Data.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

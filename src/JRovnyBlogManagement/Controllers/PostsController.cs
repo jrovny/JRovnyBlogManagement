@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using JRovnySiteManager.Data;
-using JRovnySiteManager.Data.EntityFramework.Models;
-using JRovnySiteManager.Models;
+using JRovny.BlogManagement.Data;
+using JRovny.BlogManagement.Data.EntityFramework.Models;
+using JRovny.BlogManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace JRovnySiteManager.Controllers
+namespace JRovny.BlogManagement.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

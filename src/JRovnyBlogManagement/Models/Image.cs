@@ -1,4 +1,4 @@
-namespace JRovnySiteManager.Models
+namespace JRovny.BlogManagement.Models
 {
     public class Image
     {

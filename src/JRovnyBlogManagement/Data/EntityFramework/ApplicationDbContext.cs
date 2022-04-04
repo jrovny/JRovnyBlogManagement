@@ -1,8 +1,8 @@
-using JRovnySiteManager.Data.EntityFramework.Models;
+using JRovny.BlogManagement.Data.EntityFramework.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace JRovnySiteManager.Data.EntityFramework
+namespace JRovny.BlogManagement.Data.EntityFramework
 {
     public class ApplicationDbContext : DbContext
     {

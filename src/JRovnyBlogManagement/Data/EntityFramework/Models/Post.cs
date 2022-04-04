@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace JRovnySiteManager.Data.EntityFramework.Models
+namespace JRovny.BlogManagement.Data.EntityFramework.Models
 {
     [Table("post")]
     public class Post

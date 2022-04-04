@@ -1,6 +1,6 @@
 using AutoMapper;
 
-namespace JRovnySiteManager.Models.MappingProfiles
+namespace JRovny.BlogManagement.Models.MappingProfiles
 {
     public class MappingProfile : Profile
     {

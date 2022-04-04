@@ -1,6 +1,6 @@
 using System;
 
-namespace JRovnySiteManager.Data.Models
+namespace JRovny.BlogManagement.Data.Models
 {
     public class PostSummary
     {

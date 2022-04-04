@@ -6,9 +6,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/JRovnySiteManager/bin/Debug/net6.0/JRovnySiteManager.dll",
+            "program": "${workspaceFolder}/src/JRovnyBlogManagement/bin/Debug/net6.0/JRovnySiteManager.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/JRovnySiteManager",
+            "cwd": "${workspaceFolder}/src/JRovnyBlogManagement",
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using JRovnySiteManager.Data.EntityFramework;
-using JRovnySiteManager.Data.EntityFramework.Models;
+using JRovny.BlogManagement.Data.EntityFramework;
+using JRovny.BlogManagement.Data.EntityFramework.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace JRovnySiteManager.Data
+namespace JRovny.BlogManagement.Data
 {
     public class ImagesDataProvider
     {

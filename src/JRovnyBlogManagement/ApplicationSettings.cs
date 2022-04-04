@@ -1,4 +1,4 @@
-namespace JRovnySiteManager
+namespace JRovny.BlogManagement
 {
     public class ApplicationSettings
     {
