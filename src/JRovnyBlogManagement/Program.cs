@@ -7,7 +7,6 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient<PostsDataProvider>();
@@ -25,8 +24,6 @@ var app = builder.Build();
 app.UseSpaStaticFiles();
 app.UseRouting();
 app.UseEndpoints(endpoints => endpoints.MapControllers());
-
-// app.MapDefaultControllerRoute();
 
 app.UseSpa(spa =>
 {
