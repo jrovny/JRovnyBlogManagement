@@ -18,11 +18,21 @@ builder.Services.AddSpaStaticFiles(configuration =>
 {
     configuration.RootPath = "dist";
 });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("IdentityServer", policy =>
+    {
+        policy.WithOrigins("https://test.accounts.jrovny.com")
+            .AllowAnyHeader()
+            .AllowAnyOrigin();
+    });
+});
 
 var app = builder.Build();
 
 app.UseSpaStaticFiles();
 app.UseRouting();
+app.UseCors("IdentityServer");
 app.UseEndpoints(endpoints => endpoints.MapControllers());
 
 app.UseSpa(spa =>
