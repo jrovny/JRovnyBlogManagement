@@ -10,9 +10,10 @@ import { AuthService } from 'src/app/core/auth.service';
 export class SigninCallbackComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.authService.userManager
-      .signinCallback()
-      .then(() => this.router.navigate(['']));
+  async ngOnInit(): Promise<void> {
+    await this.authService.userManager.signinRedirectCallback().then((user) => {
+      console.log('signinCallback() called', user);
+      this.router.navigate(['']);
+    });
   }
 }
