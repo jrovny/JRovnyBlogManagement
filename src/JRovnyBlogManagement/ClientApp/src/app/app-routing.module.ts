@@ -7,7 +7,7 @@ import { SigninCallbackComponent } from './components/signin-callback/signin-cal
 const routes: Routes = [
   { path: '', component: PostListComponent },
   { path: 'posts/:id', component: PostEditComponent },
-  { path: 'signin-callback.html', component: SigninCallbackComponent },
+  { path: 'signin-callback', component: SigninCallbackComponent },
 ];
 
 @NgModule({
