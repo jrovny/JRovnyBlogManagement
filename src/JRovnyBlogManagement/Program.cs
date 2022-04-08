@@ -28,10 +28,25 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = "https://test.accounts.jrovny.com";
+        options.Audience = "https://localhost:5001/api";
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateAudience = true
+        };
+    });
+
 var app = builder.Build();
 
 app.UseSpaStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseCors("IdentityServer");
 app.UseEndpoints(endpoints => endpoints.MapControllers());
 
