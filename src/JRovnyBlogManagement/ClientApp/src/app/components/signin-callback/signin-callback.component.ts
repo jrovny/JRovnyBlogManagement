@@ -11,7 +11,7 @@ export class SigninCallbackComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
-    await this.authService.userManager.signinRedirectCallback().then((user) => {
+    await this.authService.signinRedirectCallback().then((user) => {
       console.log('signinCallback() called', user);
       this.router.navigate(['']);
     });

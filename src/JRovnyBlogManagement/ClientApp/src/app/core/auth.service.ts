@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  userManager: UserManager;
+  private userManager: UserManager;
 
   constructor() {
     const settings: UserManagerSettings = {
