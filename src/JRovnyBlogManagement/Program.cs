@@ -5,11 +5,24 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Formatting.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 var section = builder.Configuration.GetSection("ApplicationSettings");
 var authority = section.GetValue<string>("authority");
 var audience = section.GetValue<string>("audience");
+
+builder.Host.UseSerilog((context, logger) =>
+{
+    var isDevelopment = context.HostingEnvironment.IsDevelopment();
+    logger.WriteTo.Console()
+    .WriteTo.File(new JsonFormatter(),
+        isDevelopment ? @".\log\log-.txt" : @"./log/log-.txt",
+        rollingInterval: RollingInterval.Day,
+        retainedFileCountLimit: null,
+        rollOnFileSizeLimit: true);
+});
 
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddAutoMapper(typeof(Program));
