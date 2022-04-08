@@ -16,8 +16,11 @@ var audience = section.GetValue<string>("audience");
 builder.Host.UseSerilog((context, logger) =>
 {
     var isDevelopment = context.HostingEnvironment.IsDevelopment();
-    logger.WriteTo.Console()
-    .WriteTo.File(new JsonFormatter(),
+
+    if (isDevelopment)
+        logger.WriteTo.Console();
+
+    logger.WriteTo.File(new JsonFormatter(),
         isDevelopment ? @".\log\log-.txt" : @"./log/log-.txt",
         rollingInterval: RollingInterval.Day,
         retainedFileCountLimit: null,
