@@ -2,16 +2,20 @@ using JRovny.BlogManagement;
 using JRovny.BlogManagement.Data;
 using JRovny.BlogManagement.Data.EntityFramework;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
+var section = builder.Configuration.GetSection("ApplicationSettings");
+var authority = section.GetValue<string>("authority");
+var audience = section.GetValue<string>("audience");
 
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient<PostsDataProvider>();
 builder.Services.AddTransient<ImagesDataProvider>();
-builder.Services.Configure<ApplicationSettings>(builder.Configuration.GetSection("ApplicationSettings"));
+builder.Services.Configure<ApplicationSettings>(section);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSpaStaticFiles(configuration =>
@@ -22,7 +26,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("IdentityServer", policy =>
     {
-        policy.WithOrigins("https://test.accounts.jrovny.com")
+        policy.WithOrigins(authority)
             .AllowAnyHeader()
             .AllowAnyOrigin();
     });
@@ -31,8 +35,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
-        options.Authority = "https://test.accounts.jrovny.com";
-        options.Audience = "https://localhost:5001/api";
+        options.Authority = authority;
+        options.Audience = audience;
         options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
         {
             ValidateAudience = true
