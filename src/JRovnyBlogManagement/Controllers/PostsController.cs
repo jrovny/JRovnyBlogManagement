@@ -1,15 +1,17 @@
 ﻿using AutoMapper;
 using JRovny.BlogManagement.Data;
 using JRovny.BlogManagement.Data.EntityFramework.Models;
-using JRovny.BlogManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace JRovny.BlogManagement.Controllers
 {
+
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class PostsController : ControllerBase
     {
         private readonly PostsDataProvider _dataProvider;
