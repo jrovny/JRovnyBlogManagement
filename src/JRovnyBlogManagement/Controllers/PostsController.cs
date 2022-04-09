@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace JRovny.BlogManagement.Controllers
 {
 
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
     public class PostsController : ControllerBase
     {
         private readonly PostsDataProvider _dataProvider;
