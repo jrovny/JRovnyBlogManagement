@@ -1,0 +1,9 @@
+<mat-toolbar color="primary"
+  ><button mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-button (click)="signIn()">Sign In</button>
+  <button mat-button *ngIf="this.getUser()" (click)="signOut()">
+    Sign Out
+  </button>
+</mat-toolbar>

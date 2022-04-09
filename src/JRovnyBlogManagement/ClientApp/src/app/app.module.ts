@@ -28,6 +28,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { ImageListComponent } from './components/image-list/image-list.component';
 import { SigninCallbackComponent } from './components/signin-callback/signin-callback.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SigninCallbackComponent } from './components/signin-callback/signin-cal
     PostEditComponent,
     ImageListComponent,
     SigninCallbackComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
