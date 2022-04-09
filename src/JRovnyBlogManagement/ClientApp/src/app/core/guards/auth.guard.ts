@@ -24,16 +24,14 @@ export class AuthGuard implements CanActivate {
     | UrlTree {
     // Whitelist the /signin-callback path
     if (state.url.substring(0, 16) === '/signin-callback') {
-      console.log('Whitelisted route');
       return true;
     }
 
     if (this.authService.isSignedIn()) {
-      console.log('Signed in');
       return true;
     }
 
-    console.log('Not signed in');
+    this.authService.signIn();
     return false;
   }
 }
