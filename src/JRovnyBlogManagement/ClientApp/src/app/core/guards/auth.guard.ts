@@ -22,11 +22,6 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // Whitelist the /signin-callback path
-    if (state.url.substring(0, 16) === '/signin-callback') {
-      return true;
-    }
-
     if (this.authService.isSignedIn()) {
       return true;
     }
