@@ -49,4 +49,8 @@ export class AuthService {
   public signinRedirectCallback() {
     return this.userManager.signinRedirectCallback();
   }
+
+  public getAccessToken() {
+    return this.user?.access_token ?? '';
+  }
 }
