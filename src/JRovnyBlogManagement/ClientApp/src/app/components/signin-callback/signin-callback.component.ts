@@ -12,7 +12,9 @@ export class SigninCallbackComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.authService.signinRedirectCallback().then((user) => {
-      this.router.navigate(['']);
+      console.log('Auth service called');
+      this.authService.user = user;
+      this.router.navigate(['/admin']);
     });
   }
 }

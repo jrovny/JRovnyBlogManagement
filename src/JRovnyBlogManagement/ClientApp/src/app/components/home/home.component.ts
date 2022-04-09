@@ -9,10 +9,9 @@ import { AuthService } from 'src/app/core/auth.service';
 export class HomeComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.authService.getUser().then((user) => {
-      console.log(user);
-      this.authService.user = user;
-    });
+  ngOnInit(): void {}
+
+  signIn() {
+    this.authService.signIn();
   }
 }
