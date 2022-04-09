@@ -1,10 +1,4 @@
-<mat-toolbar color="primary"
-  ><button mat-icon-button (click)="toggleSidenav()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <button mat-button (click)="signIn()">Sign In</button>
-  <button mat-button *ngIf="this.user" (click)="signOut()">Sign Out</button>
-</mat-toolbar>
+<app-navbar></app-navbar>
 <mat-sidenav-container class="sidenavContainer">
   <mat-sidenav [opened]="sidenavOpened" mode="side" class="sidenav">
     <mat-nav-list>
