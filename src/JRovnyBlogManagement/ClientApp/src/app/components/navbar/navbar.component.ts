@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from 'oidc-client-ts';
 import { AuthService } from 'src/app/core/auth.service';
 
@@ -12,7 +11,7 @@ export class NavbarComponent implements OnInit {
   sidenavOpened = true;
   user: User | null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -30,9 +29,5 @@ export class NavbarComponent implements OnInit {
 
   getUser() {
     return this.authService.user;
-  }
-
-  navigateToHomePage() {
-    this.router.navigate(['/']);
   }
 }
