@@ -53,4 +53,8 @@ export class AuthService {
   public getAccessToken() {
     return this.user?.access_token ?? '';
   }
+
+  public isSignedIn(): boolean {
+    return !!(this.user && this.user.access_token && !this.user.expired);
+  }
 }
