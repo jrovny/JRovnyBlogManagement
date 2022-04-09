@@ -6,11 +6,14 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  constructor(private authService: AuthService) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -19,7 +22,18 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log('Activated route guard');
-    return true;
+    // Whitelist the /signin-callback path
+    if (state.url.substring(0, 16) === '/signin-callback') {
+      console.log('Whitelisted route');
+      return true;
+    }
+
+    if (this.authService.isSignedIn()) {
+      console.log('Signed in');
+      return true;
+    }
+
+    console.log('Not signed in');
+    return false;
   }
 }
