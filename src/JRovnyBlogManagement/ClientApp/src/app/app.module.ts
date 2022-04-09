@@ -29,8 +29,8 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { ImageListComponent } from './components/image-list/image-list.component';
 import { SigninCallbackComponent } from './components/signin-callback/signin-callback.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { httpInterceptorProviders } from './core/interceptors/indext';
 import { HomeComponent } from './components/home/home.component';
+import { httpInterceptorProviders } from './core/interceptors';
 
 @NgModule({
   declarations: [
