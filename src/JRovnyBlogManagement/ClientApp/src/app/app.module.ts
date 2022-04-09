@@ -30,6 +30,7 @@ import { ImageListComponent } from './components/image-list/image-list.component
 import { SigninCallbackComponent } from './components/signin-callback/signin-callback.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { httpInterceptorProviders } from './core/interceptors/indext';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { httpInterceptorProviders } from './core/interceptors/indext';
     ImageListComponent,
     SigninCallbackComponent,
     NavbarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
