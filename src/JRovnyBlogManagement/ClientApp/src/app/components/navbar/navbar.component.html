@@ -7,8 +7,7 @@
       <a mat-button routerLink="/">Blog Manager</a>
     </div>
     <div>
-      <button mat-button (click)="signIn()">Sign In</button>
-      <button mat-button *ngIf="this.getUser()" (click)="signOut()">
+      <button mat-button *ngIf="isSignedIn()" (click)="signOut()">
         Sign Out
       </button>
     </div>
