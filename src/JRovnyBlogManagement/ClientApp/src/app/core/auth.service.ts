@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   private userManager: UserManager;
+  public user: User | null;
 
   constructor() {
     const settings: UserManagerSettings = {
