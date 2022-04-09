@@ -1,8 +1,11 @@
 <mat-toolbar color="primary">
   <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%">
-    <button mat-icon-button (click)="toggleSidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
+    <div>
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-button (click)="navigateToHomePage()">Blog Manager</button>
+    </div>
     <div>
       <button mat-button (click)="signIn()">Sign In</button>
       <button mat-button *ngIf="this.getUser()" (click)="signOut()">
