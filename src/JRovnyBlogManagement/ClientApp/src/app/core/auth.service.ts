@@ -25,9 +25,20 @@ export class AuthService {
       scope: environment.scope,
       loadUserInfo: true,
       userStore: new WebStorageStateStore({ store: window.localStorage }),
+      monitorSession: true,
     };
 
+    console.log('Initializing auth service');
+
     this.userManager = new UserManager(settings);
+
+    this.userManager.events.addUserSignedOut(() =>
+      console.log('user signed out')
+    );
+
+    this.userManager.events.addUserSignedIn(() =>
+      console.log('user signed in')
+    );
   }
 
   public getUser(): Promise<User | null> {
