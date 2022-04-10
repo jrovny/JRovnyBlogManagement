@@ -32,6 +32,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { httpInterceptorProviders } from './core/interceptors';
 import { ShellComponent } from './components/shell/shell.component';
+import { SilentCallbackComponent } from './components/silent-callback/silent-callback.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ShellComponent } from './components/shell/shell.component';
     NavbarComponent,
     HomeComponent,
     ShellComponent,
+    SilentCallbackComponent,
   ],
   imports: [
     BrowserModule,
