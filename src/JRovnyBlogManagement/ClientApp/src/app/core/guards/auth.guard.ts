@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Injectable({
@@ -29,11 +29,17 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    if (this.authService.isSignedIn()) {
-      return true;
-    }
-
-    this.authService.signIn();
-    return false;
+    return from(this.authService.getUser()).pipe(
+      map((user) => {
+        if (user && user.access_token && !user.expired) {
+          console.log('User signed in');
+          return true;
+        } else {
+          console.log('User not signed in');
+          this.authService.signIn();
+          return false;
+        }
+      })
+    );
   }
 }
