@@ -67,14 +67,6 @@ export class AuthService {
     return !!(this.user && this.user.access_token && !this.user.expired);
   }
 
-  // public isSignedIn$(): Observable<boolean> {
-  //   if (this.isSignedIn()) return of(true);
-
-  //   return from(this.userManager.getUser()).pipe(
-  //     map((user) => !!(user && user.access_token && !user.expired))
-  //   );
-  // }
-
   public signinSilentCallback() {
     this.userManager.signinSilentCallback();
   }
