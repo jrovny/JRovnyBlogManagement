@@ -5,13 +5,14 @@ import {
   UserManagerSettings,
   WebStorageStateStore,
 } from 'oidc-client-ts';
+import { from, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private userManager: UserManager;
+  public userManager: UserManager;
   public user: User | null;
 
   constructor() {
@@ -19,13 +20,14 @@ export class AuthService {
       authority: environment.authority,
       client_id: environment.clientId,
       redirect_uri: `${environment.clientRoot}/signin-callback`,
-      silent_redirect_uri: `${environment.clientRoot}/silent-callback.html`,
+      // silent_redirect_uri: `${environment.clientRoot}/silent-callback.html`,
       post_logout_redirect_uri: `${environment.clientRoot}`,
       response_type: 'code',
       scope: environment.scope,
       loadUserInfo: true,
       userStore: new WebStorageStateStore({ store: window.localStorage }),
-      monitorSession: true,
+      monitorSession: false,
+      // automaticSilentRenew: false,
     };
 
     console.log('Initializing auth service');
@@ -34,10 +36,6 @@ export class AuthService {
 
     this.userManager.events.addUserSignedOut(() =>
       console.log('user signed out')
-    );
-
-    this.userManager.events.addUserSignedIn(() =>
-      console.log('user signed in')
     );
   }
 
@@ -67,5 +65,17 @@ export class AuthService {
 
   public isSignedIn(): boolean {
     return !!(this.user && this.user.access_token && !this.user.expired);
+  }
+
+  public isSignedInAsync(): Observable<boolean> {
+    if (this.isSignedIn()) return of(true);
+
+    return from(this.userManager.getUser()).pipe(
+      map((user) => !!(user && user.access_token && !user.expired))
+    );
+  }
+
+  public signinSilentCallback() {
+    this.userManager.signinSilentCallback();
   }
 }
