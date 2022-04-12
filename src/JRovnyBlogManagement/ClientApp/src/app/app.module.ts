@@ -33,6 +33,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { httpInterceptorProviders } from './core/interceptors';
 import { SilentCallbackComponent } from './components/silent-callback/silent-callback.component';
+import { SignoutComponent } from './components/signout/signout.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SilentCallbackComponent } from './components/silent-callback/silent-cal
     NavbarComponent,
     HomeComponent,
     SilentCallbackComponent,
+    SignoutComponent,
   ],
   imports: [
     BrowserModule,
