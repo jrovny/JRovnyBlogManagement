@@ -21,6 +21,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -65,6 +66,7 @@ import { SilentCallbackComponent } from './components/silent-callback/silent-cal
     MatListModule,
     MatSidenavModule,
     MatTableModule,
+    MatTabsModule,
     TextFieldModule,
     MatToolbarModule,
     MatTooltipModule,
