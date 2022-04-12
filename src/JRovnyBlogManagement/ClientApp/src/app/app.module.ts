@@ -32,7 +32,6 @@ import { SigninCallbackComponent } from './components/signin-callback/signin-cal
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { httpInterceptorProviders } from './core/interceptors';
-import { ShellComponent } from './components/shell/shell.component';
 import { SilentCallbackComponent } from './components/silent-callback/silent-callback.component';
 
 @NgModule({
@@ -44,7 +43,6 @@ import { SilentCallbackComponent } from './components/silent-callback/silent-cal
     SigninCallbackComponent,
     NavbarComponent,
     HomeComponent,
-    ShellComponent,
     SilentCallbackComponent,
   ],
   imports: [
