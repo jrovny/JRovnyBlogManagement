@@ -31,6 +31,7 @@ export class AuthGuard implements CanActivate {
 
     return from(this.authService.getUser()).pipe(
       map((user) => {
+        this.authService.user = user;
         if (user && user.access_token && !user.expired) {
           console.log('User signed in');
           return true;
