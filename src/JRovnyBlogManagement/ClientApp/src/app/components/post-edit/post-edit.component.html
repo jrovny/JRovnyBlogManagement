@@ -1,60 +1,56 @@
-<div fxLayoutGap="20px" style="height: 100%; padding: 15px">
+<form [formGroup]="form" (ngSubmit)="save()">
+  <!-- <div fxLayoutGap="20px" style="height: 100%; padding: 15px"> -->
+  <mat-form-field style="width: 100%">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="title" />
+  </mat-form-field>
+  <mat-form-field style="width: 100%; margin-right: 10px">
+    <mat-label>Slug</mat-label>
+    <input matInput type="text" formControlName="slug" />
+  </mat-form-field>
+  <mat-checkbox
+    formControlName="published"
+    style="margin-bottom: 15px"
+    fxFlexAlign="end"
+    >Published</mat-checkbox
+  >
   <mat-tab-group>
     <mat-tab label="Edit">
-      <form [formGroup]="form" fxFlex (ngSubmit)="save()">
-        <div fxLayout="column" style="height: 100%">
-          <mat-form-field style="width: 100%">
-            <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" />
-          </mat-form-field>
-          <div fxLayout="row">
-            <mat-form-field style="width: 100%; margin-right: 10px">
-              <mat-label>Slug</mat-label>
-              <input matInput type="text" formControlName="slug" />
-            </mat-form-field>
-            <mat-checkbox
-              formControlName="published"
-              style="margin-bottom: 15px"
-              fxFlexAlign="end"
-              >Published</mat-checkbox
-            >
-            <button
-              mat-button
-              type="button"
-              fxFlexAlign="center"
-              style="margin: 0 5px"
-              (click)="goBack()"
-            >
-              Back
-            </button>
-            <button
-              mat-raised-button
-              color="primary"
-              type="submit"
-              fxFlexAlign="center"
-            >
-              Save
-            </button>
-            <!-- <div fxFlex style="height: 100%"> -->
-            <textarea
-              matInput
-              cdkTextareaAutosize
-              cdkAutosizeMinRows="26"
-              cdkAutosizeMaxRows="26"
-              type="text"
-              formControlName="content"
-            ></textarea>
-            <!-- </div> -->
-          </div>
-        </div>
-      </form>
+      <!-- <div fxLayout="row"> -->
+      <textarea
+        matInput
+        cdkAutosizeMinRows="26"
+        cdkAutosizeMaxRows="26"
+        type="text"
+        formControlName="content"
+        style="height: 100%"
+      ></textarea>
+      <!-- </div> -->
     </mat-tab>
     <mat-tab label="Preview">
-      <div fxLayout="row" fxLayoutGap="10px" fxFlex style="overflow: hidden">
+      <div fxLayout="row" fxLayoutGap="10px" fxFlex style="overflow: auto">
         <div *ngIf="getContentHtml()" style="overflow: auto" fxFlex>
           <p [innerHtml]="getContentHtml()" style="padding-left: 10px"></p>
         </div>
       </div>
     </mat-tab>
   </mat-tab-group>
-</div>
+  <!-- <button
+      mat-button
+      type="button"
+      fxFlexAlign="center"
+      style="margin: 0 5px"
+      (click)="goBack()"
+    >
+      Back
+    </button> 
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      fxFlexAlign="center"
+    >
+      Save
+    </button> -->
+  <!-- </div> -->
+</form>
