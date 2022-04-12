@@ -1,6 +1,12 @@
-<div fxLayoutAlign="center center" fxF style="height: 100%">
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <h1 style="font-size: xxx-large">JRovny Blog Portal</h1>
-    <button mat-raised-button (click)="signIn()">Sign In</button>
-  </div>
-</div>
+<app-navbar></app-navbar>
+<mat-sidenav-container class="sidenavContainer">
+  <mat-sidenav [opened]="sidenavOpened" mode="side" class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/posts">Posts</a>
+      <a mat-list-item routerLink="/">Images</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

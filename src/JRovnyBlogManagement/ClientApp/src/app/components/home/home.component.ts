@@ -8,13 +8,16 @@ import { AuthService } from 'src/app/core/auth.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  sidenavOpened = true;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    console.log('Home page ngOnInit');
     this.authService.getUser().then((user) => {
       if (user) {
+        console.log('Home page getting user');
         this.authService.user = user;
-        this.router.navigate(['/']);
       }
     });
   }

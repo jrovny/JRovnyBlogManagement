@@ -12,7 +12,7 @@ const routes: Routes = [
   // { path: '', component: HomeComponent },
   {
     path: '',
-    component: ShellComponent,
+    component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
       { path: 'signin-callback', component: SigninCallbackComponent },
