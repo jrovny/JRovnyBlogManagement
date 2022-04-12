@@ -14,7 +14,7 @@ export class SigninCallbackComponent implements OnInit {
     await this.authService.signinRedirectCallback().then((user) => {
       console.log('Auth service called');
       this.authService.user = user;
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/']);
     });
   }
 }

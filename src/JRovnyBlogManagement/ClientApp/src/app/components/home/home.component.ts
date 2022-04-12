@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
     this.authService.getUser().then((user) => {
       if (user) {
         this.authService.user = user;
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/']);
       }
     });
   }

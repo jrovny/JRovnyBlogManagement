@@ -9,14 +9,14 @@ import { SilentCallbackComponent } from './components/silent-callback/silent-cal
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'signin-callback', component: SigninCallbackComponent },
-  { path: 'silent-callback.html', component: SilentCallbackComponent },
+  // { path: '', component: HomeComponent },
   {
-    path: 'admin',
+    path: '',
     component: ShellComponent,
     canActivate: [AuthGuard],
     children: [
+      { path: 'signin-callback', component: SigninCallbackComponent },
+      { path: 'silent-callback.html', component: SilentCallbackComponent },
       { path: 'posts', component: PostListComponent },
       { path: 'posts/:id', component: PostEditComponent },
     ],
