@@ -30,11 +30,6 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    // Whitelist signout endpoint
-    if (state.url.substring(0, signout.length) === signout) {
-      return true;
-    }
-
     return from(this.authService.getUser()).pipe(
       map((user) => {
         this.authService.user = user;
