@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { SigninCallbackComponent } from './components/signin-callback/signin-callback.component';
+import { SignoutComponent } from './components/signout/signout.component';
 import { SilentCallbackComponent } from './components/silent-callback/silent-callback.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'posts/:id', component: PostEditComponent },
     ],
   },
+  { path: 'signout', component: SignoutComponent },
 ];
 
 @NgModule({

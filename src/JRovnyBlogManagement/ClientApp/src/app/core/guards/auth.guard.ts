@@ -23,9 +23,15 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     const signIn: string = '/signin-callback';
+    const signout: string = '/signout';
 
     // Whitelist signin-callback endpoint
     if (state.url.substring(0, signIn.length) === signIn) {
+      return true;
+    }
+
+    // Whitelist signout endpoint
+    if (state.url.substring(0, signout.length) === signout) {
       return true;
     }
 
