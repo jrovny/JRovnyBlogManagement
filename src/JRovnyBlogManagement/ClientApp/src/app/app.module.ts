@@ -16,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -59,6 +60,7 @@ import { SilentCallbackComponent } from './components/silent-callback/silent-cal
     MatDividerModule,
     MatIconModule,
     MatInputModule,
+    MatMenuModule,
     MatFormFieldModule,
     MatGridListModule,
     MatListModule,
