@@ -12,7 +12,7 @@ RUN npm config set unsafe-perm true
 RUN npm install
 RUN npm install -g @angular/cli@9.0.0
 COPY ClientApp ./
-RUN npm run-script publish
+RUN npm run-script stage
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
