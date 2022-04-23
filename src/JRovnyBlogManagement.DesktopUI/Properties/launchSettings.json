@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "JRovnyBlogManagement.DesktopUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "JRovnyBlogManagement.DesktopUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
