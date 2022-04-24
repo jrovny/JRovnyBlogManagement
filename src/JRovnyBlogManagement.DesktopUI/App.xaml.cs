@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
+using System;
 
 namespace JRovnyBlogManagement.DesktopUI
 {
@@ -6,12 +8,18 @@ namespace JRovnyBlogManagement.DesktopUI
     {
         public App()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            ServiceCollection services = new();
+            ConfigureServices(services);
         }
 
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        private void ConfigureServices(ServiceCollection services)
         {
-            m_window = new MainWindow();
+        }
+
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        {
+            m_window = new MainWindow(new AuthenticationService());
             m_window.Activate();
         }
 
