@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using JRovnyBlogManagement.DesktopUI.Events;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.UI.Xaml;
 
 namespace JRovnyBlogManagement.DesktopUI
@@ -19,13 +22,20 @@ namespace JRovnyBlogManagement.DesktopUI
         private void ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton<AuthenticationService>();
-            services.AddTransient<MainWindow>();
+            services.AddTransient<SplashScreenView>();
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            _window = _serviceProvider.GetService<MainWindow>();
-            _window.Activate();
+            var splashScreen = _serviceProvider.GetRequiredService<SplashScreenView>();
+            splashScreen.Activate();
+
+            WeakReferenceMessenger.Default.Register<UserSignedInEvent>(this, (r, m) =>
+            {
+                _window = new MainWindow();
+                splashScreen.Close();
+                _window.Activate();
+            });
         }
     }
 }
