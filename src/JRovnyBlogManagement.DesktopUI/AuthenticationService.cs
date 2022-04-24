@@ -8,7 +8,7 @@ namespace JRovnyBlogManagement.DesktopUI
         static string _authority = "https://test.accounts.jrovny.com";
         static OidcClient _oidcClient;
 
-        public async Task Login()
+        public async Task<LoginResult> Login()
         {
             var browser = new SystemBrowser();
             string redirectUri = string.Format($"http://127.0.0.1:{browser.Port}");
@@ -24,7 +24,7 @@ namespace JRovnyBlogManagement.DesktopUI
             };
 
             _oidcClient = new OidcClient(options);
-            var result = await _oidcClient.LoginAsync(new LoginRequest());
+            return await _oidcClient.LoginAsync(new LoginRequest());
         }
     }
 }
