@@ -7,12 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid>
-        <Button Content="Sign In" Click="Button_Click"/>
-        <!--<NavigationView>
+        <NavigationView>
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Posts"/>
                 <NavigationViewItem Content="Images"/>
             </NavigationView.MenuItems>
-        </NavigationView>-->
+        </NavigationView>
     </Grid>
 </Window>
