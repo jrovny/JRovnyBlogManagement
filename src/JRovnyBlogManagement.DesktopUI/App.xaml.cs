@@ -1,28 +1,31 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
-using System;
 
 namespace JRovnyBlogManagement.DesktopUI
 {
     public partial class App : Application
     {
+        private Window _window;
+        private ServiceProvider _serviceProvider;
+
         public App()
         {
             InitializeComponent();
             ServiceCollection services = new();
             ConfigureServices(services);
+            _serviceProvider = services.BuildServiceProvider();
         }
 
         private void ConfigureServices(ServiceCollection services)
         {
+            services.AddSingleton<AuthenticationService>();
+            services.AddTransient<MainWindow>();
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow(new AuthenticationService());
-            m_window.Activate();
+            _window = _serviceProvider.GetService<MainWindow>();
+            _window.Activate();
         }
-
-        private Window m_window;
     }
 }
