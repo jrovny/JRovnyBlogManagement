@@ -98,9 +98,7 @@ namespace JRovnyBlogManagement.DesktopUI
                 return true;
             }
 
-            TimeSpan span = _accessTokenExpiration.Subtract(DateTime.UtcNow);
-
-            return span.Milliseconds < 5000;
+            return _accessTokenExpiration.Subtract(DateTime.UtcNow).Milliseconds < 5000;
         }
     }
 }
