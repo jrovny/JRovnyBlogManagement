@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace JRovnyBlogManagement.DesktopUI
+namespace JRovnyBlogManagement.DesktopUI.Auth
 {
     public class SystemBrowser : IBrowser
     {

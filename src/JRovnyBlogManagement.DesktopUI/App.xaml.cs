@@ -1,8 +1,10 @@
-﻿using JRovnyBlogManagement.DesktopUI.Events;
+﻿using JRovnyBlogManagement.DesktopUI.Auth;
+using JRovnyBlogManagement.DesktopUI.Events;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.UI.Xaml;
+using System;
+using System.Net.Http.Headers;
 
 namespace JRovnyBlogManagement.DesktopUI
 {
@@ -22,6 +24,14 @@ namespace JRovnyBlogManagement.DesktopUI
         private void ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton<AuthenticationService>();
+            services.AddHttpClient<ApiClient>(options =>
+            {
+                options.BaseAddress = new Uri("https://test.portal.jrovny.com");
+                options.DefaultRequestHeaders.Clear();
+                options.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                options.DefaultRequestHeaders.UserAgent.ParseAdd("BlogManagementDesktopAppStaging");
+
+            });
             services.AddTransient<SplashScreenView>();
         }
 
