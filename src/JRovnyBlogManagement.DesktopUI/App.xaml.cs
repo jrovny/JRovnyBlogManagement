@@ -24,6 +24,7 @@ namespace JRovnyBlogManagement.DesktopUI
         private void ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton<AuthenticationService>();
+            services.AddTransient<AccessTokenHandler>();
             services.AddHttpClient<ApiClient>(options =>
             {
                 options.BaseAddress = new Uri("https://test.portal.jrovny.com");
@@ -31,8 +32,9 @@ namespace JRovnyBlogManagement.DesktopUI
                 options.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 options.DefaultRequestHeaders.UserAgent.ParseAdd("BlogManagementDesktopAppStaging");
 
-            });
+            }).AddHttpMessageHandler<AccessTokenHandler>();
             services.AddTransient<SplashScreenView>();
+            services.AddTransient<MainWindow>();
         }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
@@ -42,7 +44,7 @@ namespace JRovnyBlogManagement.DesktopUI
             
             WeakReferenceMessenger.Default.Register<UserSignedInEvent>(this, (r, m) =>
             {
-                _window = new MainWindow();
+                _window = _serviceProvider.GetRequiredService<MainWindow>();
                 _window.Activate();
                 splashScreen.Close();
             });
