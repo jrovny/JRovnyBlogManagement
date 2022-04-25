@@ -31,6 +31,9 @@ namespace JRovnyBlogManagement.DesktopUI
                 else
                 {
                     _localSettings.Values[RefreshTokenKey] = result.RefreshToken;
+                    _accessToken = result.AccessToken;
+                    _accessTokenExpiration = result.AccessTokenExpiration;
+
                     return true;
                 }
             }
@@ -79,7 +82,10 @@ namespace JRovnyBlogManagement.DesktopUI
             // Check access token expiration here
             if (AccessTokenExpired())
             {
-                await SignInAsync();
+                if (!(await SignInAsync()))
+                {
+                    throw new Exception("Unable to get access token");
+                }
             }
 
             return _accessToken;
