@@ -98,6 +98,7 @@ namespace JRovnyBlogManagement.DesktopUI.Auth
                 return true;
             }
 
+            // TODO: Modify expiration in IS to test this part
             return _accessTokenExpiration.Subtract(DateTime.UtcNow).TotalMilliseconds < 5000;
         }
     }
