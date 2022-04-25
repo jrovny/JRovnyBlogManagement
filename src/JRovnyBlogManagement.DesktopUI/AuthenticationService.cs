@@ -1,4 +1,5 @@
 ﻿using IdentityModel.OidcClient;
+using System;
 using System.Threading.Tasks;
 
 namespace JRovnyBlogManagement.DesktopUI
@@ -7,6 +8,7 @@ namespace JRovnyBlogManagement.DesktopUI
     {
         static OidcClient _oidcClient;
         private string _accessToken;
+        private DateTimeOffset _accessTokenExpiration;
         readonly Windows.Storage.ApplicationDataContainer _localSettings;
         private const string RefreshTokenKey = "refreshToken";
 
@@ -63,8 +65,32 @@ namespace JRovnyBlogManagement.DesktopUI
                 return false;
 
             _accessToken = result.AccessToken;
+            _accessTokenExpiration = result.AccessTokenExpiration;
 
             return true;
+        }
+
+        public async Task<string> AccessToken()
+        {
+            // TODO: Check access token expiration here
+            if (AccessTokenExpired())
+            {
+                await RefreshTokenAsync();
+            }
+
+            return _accessToken;
+        }
+
+        private bool AccessTokenExpired()
+        {
+            if (string.IsNullOrWhiteSpace(_accessToken))
+            {
+                return true;
+            }
+
+            TimeSpan span = _accessTokenExpiration.Subtract(DateTime.UtcNow);
+
+            return span.Milliseconds < 5000;
         }
     }
 }
