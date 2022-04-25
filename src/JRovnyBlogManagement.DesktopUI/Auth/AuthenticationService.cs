@@ -98,7 +98,7 @@ namespace JRovnyBlogManagement.DesktopUI.Auth
                 return true;
             }
 
-            return _accessTokenExpiration.Subtract(DateTime.UtcNow).Milliseconds < 5000;
+            return _accessTokenExpiration.Subtract(DateTime.UtcNow).TotalMilliseconds < 5000;
         }
     }
 }
