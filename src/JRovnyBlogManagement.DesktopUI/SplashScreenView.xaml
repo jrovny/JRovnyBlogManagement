@@ -10,7 +10,6 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="Starting app..."/>
-            <Button x:Name="SignIn" Click="SignIn_Click" Content="Click Me"/>
         </StackPanel>
     </Grid>
 </Window>

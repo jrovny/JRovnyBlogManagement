@@ -25,17 +25,19 @@ namespace JRovnyBlogManagement.DesktopUI
             services.AddTransient<SplashScreenView>();
         }
 
-        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
             var splashScreen = _serviceProvider.GetRequiredService<SplashScreenView>();
             splashScreen.Activate();
-
+            
             WeakReferenceMessenger.Default.Register<UserSignedInEvent>(this, (r, m) =>
             {
                 _window = new MainWindow();
-                splashScreen.Close();
                 _window.Activate();
+                splashScreen.Close();
             });
+            
+            await splashScreen.SignInAsync();
         }
     }
 }

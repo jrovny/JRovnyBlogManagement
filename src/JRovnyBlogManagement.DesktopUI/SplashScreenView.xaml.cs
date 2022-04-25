@@ -1,6 +1,7 @@
 ﻿using JRovnyBlogManagement.DesktopUI.Events;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.UI.Xaml;
+using System.Threading.Tasks;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -20,13 +21,15 @@ namespace JRovnyBlogManagement.DesktopUI
             _authenticationService = authenticationService;
         }
 
-        private async void SignIn_Click(object sender, RoutedEventArgs e)
+        public async Task SignInAsync()
         {
-            var result = await _authenticationService.Login();
-
-            if (result is not null)
+            if (await _authenticationService.SignInAsync())
             {
                 WeakReferenceMessenger.Default.Send(new UserSignedInEvent());
+            }
+            else
+            {
+                this.Close();
             }
         }
     }
