@@ -23,6 +23,8 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "@azure/msal-angular": "^2.2.0",
+    "@azure/msal-browser": "^2.23.0",
     "oidc-client-ts": "^2.0.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
