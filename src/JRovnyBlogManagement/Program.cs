@@ -1,10 +1,13 @@
 using JRovny.BlogManagement;
 using JRovny.BlogManagement.Data;
 using JRovny.BlogManagement.Data.EntityFramework;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Identity.Web;
+using Microsoft.IdentityModel.Logging;
 using Serilog;
 using Serilog.Formatting.Json;
 
@@ -48,15 +51,31 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
+// builder.Services.AddAuthentication("Bearer")
+//     .AddJwtBearer("Bearer", options =>
+//     {
+//         options.Authority = authority;
+//         options.Audience = audience;
+//         options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+//         {
+//             ValidateAudience = true
+//         };
+//     });
+
+IdentityModelEventSource.ShowPII = true;
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApi(options =>
     {
-        options.Authority = authority;
-        options.Audience = audience;
-        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-        {
-            ValidateAudience = true
-        };
+        var obj = builder.Configuration.GetSection("AzureAdB2c");
+    }, options =>
+    {
+        var obj = builder.Configuration.GetSection("AzureAdB2c");
+        options.Instance = obj.GetValue<string>("Instance");
+        options.Domain = obj.GetValue<string>("Domain");
+        options.ClientId = obj.GetValue<string>("ClientId");
+        options.SignUpSignInPolicyId = obj.GetValue<string>("SignInScheme");
+        options.TenantId = obj.GetValue<string>("Domain");
     });
 
 var app = builder.Build();
