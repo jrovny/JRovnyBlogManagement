@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -34,6 +34,78 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { httpInterceptorProviders } from './core/interceptors';
 import { SilentCallbackComponent } from './components/silent-callback/silent-callback.component';
+import {
+  BrowserCacheLocation,
+  InteractionType,
+  IPublicClientApplication,
+  LogLevel,
+  PublicClientApplication,
+} from '@azure/msal-browser';
+import {
+  MsalBroadcastService,
+  MsalGuard,
+  MsalGuardConfiguration,
+  MsalInterceptor,
+  MsalInterceptorConfiguration,
+  MsalService,
+  MSAL_GUARD_CONFIG,
+  MSAL_INSTANCE,
+  MSAL_INTERCEPTOR_CONFIG,
+} from '@azure/msal-angular';
+import { MsalRedirectComponent } from './components/msal-redirect/msal-redirect.component';
+
+const isIE =
+  window.navigator.userAgent.indexOf('MSIE ') > -1 ||
+  window.navigator.userAgent.indexOf('Trident/') > -1; // Remove this line to use Angular Universal
+
+export function loggerCallback(logLevel: LogLevel, message: string) {
+  console.log(message);
+}
+
+export function MSALInstanceFactory(): IPublicClientApplication {
+  return new PublicClientApplication({
+    auth: {
+      clientId: '200862d9-853f-4c52-8d94-a13a1f819bac', // PPE testing environment
+      authority:
+        'https://login.microsoftonline.com/586ba18a-d8ff-473e-9c6c-02e03becc937',
+      redirectUri: 'https://localhost:5001',
+    },
+    cache: {
+      cacheLocation: BrowserCacheLocation.LocalStorage,
+      storeAuthStateInCookie: isIE, // set to true for IE 11. Remove this line to use Angular Universal
+    },
+    system: {
+      loggerOptions: {
+        loggerCallback,
+        logLevel: LogLevel.Info,
+        piiLoggingEnabled: false,
+      },
+    },
+  });
+}
+
+export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, Array<string>>();
+  // protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['https://jrovny.onmicrosoft.com/blog-api-dev/posts.all']); // Prod environment. Uncomment to use.
+  protectedResourceMap.set('https://graph.microsoft-ppe.com/v1.0/me', [
+    // 'https://jrovny.onmicrosoft.com/blog-api-dev/posts.all',
+  ]);
+
+  return {
+    interactionType: InteractionType.Redirect,
+    protectedResourceMap,
+  };
+}
+
+export function MSALGuardConfigFactory(): MsalGuardConfiguration {
+  return {
+    interactionType: InteractionType.Redirect,
+    authRequest: {
+      // scopes: ['https://jrovny.onmicrosoft.com/blog-api-dev/posts.all'],
+    },
+    loginFailedRoute: '/login-failed',
+  };
+}
 
 @NgModule({
   declarations: [
@@ -45,6 +117,7 @@ import { SilentCallbackComponent } from './components/silent-callback/silent-cal
     NavbarComponent,
     HomeComponent,
     SilentCallbackComponent,
+    MsalRedirectComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +144,28 @@ import { SilentCallbackComponent } from './components/silent-callback/silent-cal
     MatToolbarModule,
     MatTooltipModule,
   ],
-  providers: [httpInterceptorProviders],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true,
+    },
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory,
+    },
+    {
+      provide: MSAL_GUARD_CONFIG,
+      useFactory: MSALGuardConfigFactory,
+    },
+    {
+      provide: MSAL_INTERCEPTOR_CONFIG,
+      useFactory: MSALInterceptorConfigFactory,
+    },
+    MsalService,
+    MsalGuard,
+    MsalBroadcastService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
