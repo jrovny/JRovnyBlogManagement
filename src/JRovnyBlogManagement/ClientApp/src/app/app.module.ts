@@ -47,12 +47,14 @@ import {
   MsalGuardConfiguration,
   MsalInterceptor,
   MsalInterceptorConfiguration,
+  MsalRedirectComponent,
   MsalService,
   MSAL_GUARD_CONFIG,
   MSAL_INSTANCE,
   MSAL_INTERCEPTOR_CONFIG,
 } from '@azure/msal-angular';
-import { MsalRedirectComponent } from './components/msal-redirect/msal-redirect.component';
+// import { MsalRedirectComponent } from './components/msal-redirect/msal-redirect.component';
+import { msalConfig } from './core/auth-config';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE ') > -1 ||
@@ -63,47 +65,25 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
 }
 
 export function MSALInstanceFactory(): IPublicClientApplication {
-  return new PublicClientApplication({
-    auth: {
-      clientId: '200862d9-853f-4c52-8d94-a13a1f819bac', // PPE testing environment
-      authority:
-        'https://login.microsoftonline.com/586ba18a-d8ff-473e-9c6c-02e03becc937',
-      redirectUri: 'https://localhost:5001',
-    },
-    cache: {
-      cacheLocation: BrowserCacheLocation.LocalStorage,
-      storeAuthStateInCookie: isIE, // set to true for IE 11. Remove this line to use Angular Universal
-    },
-    system: {
-      loggerOptions: {
-        loggerCallback,
-        logLevel: LogLevel.Info,
-        piiLoggingEnabled: false,
-      },
-    },
-  });
+  return new PublicClientApplication(msalConfig);
 }
 
-export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
-  const protectedResourceMap = new Map<string, Array<string>>();
-  // protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['https://jrovny.onmicrosoft.com/blog-api-dev/posts.all']); // Prod environment. Uncomment to use.
-  protectedResourceMap.set('https://graph.microsoft-ppe.com/v1.0/me', [
-    // 'https://jrovny.onmicrosoft.com/blog-api-dev/posts.all',
-  ]);
+// export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+//   const protectedResourceMap = new Map<string, Array<string>>();
+//   // protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['https://jrovny.onmicrosoft.com/blog-api-dev/posts.all']); // Prod environment. Uncomment to use.
+//   protectedResourceMap.set('https://graph.microsoft-ppe.com/v1.0/me', [
+//     // 'https://jrovny.onmicrosoft.com/blog-api-dev/posts.all',
+//   ]);
 
-  return {
-    interactionType: InteractionType.Redirect,
-    protectedResourceMap,
-  };
-}
+//   return {
+//     interactionType: InteractionType.Redirect,
+//     protectedResourceMap,
+//   };
+// }
 
 export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return {
     interactionType: InteractionType.Redirect,
-    authRequest: {
-      // scopes: ['https://jrovny.onmicrosoft.com/blog-api-dev/posts.all'],
-    },
-    loginFailedRoute: '/login-failed',
   };
 }
 
@@ -117,7 +97,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     NavbarComponent,
     HomeComponent,
     SilentCallbackComponent,
-    MsalRedirectComponent,
+    // MsalRedirectComponent,
   ],
   imports: [
     BrowserModule,
@@ -158,14 +138,14 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
       provide: MSAL_GUARD_CONFIG,
       useFactory: MSALGuardConfigFactory,
     },
-    {
-      provide: MSAL_INTERCEPTOR_CONFIG,
-      useFactory: MSALInterceptorConfigFactory,
-    },
+    // {
+    //   provide: MSAL_INTERCEPTOR_CONFIG,
+    //   useFactory: MSALInterceptorConfigFactory,
+    // },
     MsalService,
     MsalGuard,
     MsalBroadcastService,
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, MsalRedirectComponent],
 })
 export class AppModule {}
