@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MsalService } from '@azure/msal-angular';
 import { User } from 'oidc-client-ts';
-import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,28 +10,26 @@ import { AuthService } from 'src/app/core/auth.service';
 export class NavbarComponent implements OnInit {
   sidenavOpened = true;
   user: User | null;
+  loginDisplay = false;
+  claims: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: MsalService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setLoginDisplay();
+    this.claims = this.authService.instance.getActiveAccount()?.idTokenClaims;
+    console.log(this.claims);
+  }
 
   toggleSidenav() {
     this.sidenavOpened = !this.sidenavOpened;
   }
 
-  signIn() {
-    this.authService.signIn();
-  }
-
   signOut() {
-    this.authService.signOut();
+    this.authService.logoutRedirect();
   }
 
-  getUser() {
-    return this.authService.user;
-  }
-
-  isSignedIn() {
-    return this.authService.isSignedIn();
+  setLoginDisplay() {
+    this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
   }
 }

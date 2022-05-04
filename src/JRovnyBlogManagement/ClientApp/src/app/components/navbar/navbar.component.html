@@ -7,8 +7,8 @@
       <a mat-button routerLink="/">Blog Manager</a>
     </div>
     <div>
-      <button mat-button *ngIf="isSignedIn()" (click)="signOut()">
-        Sign Out
+      <button mat-button *ngIf="loginDisplay" (click)="signOut()">
+        {{ claims?.name ?? "Sign Out" }}
       </button>
     </div>
   </div>
