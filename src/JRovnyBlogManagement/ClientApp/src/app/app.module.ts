@@ -29,7 +29,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { ImageListComponent } from './components/image-list/image-list.component';
-import { SigninCallbackComponent } from './components/signin-callback/signin-callback.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { httpInterceptorProviders } from './core/interceptors';
@@ -93,7 +92,6 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     PostListComponent,
     PostEditComponent,
     ImageListComponent,
-    SigninCallbackComponent,
     NavbarComponent,
     HomeComponent,
     SilentCallbackComponent,
