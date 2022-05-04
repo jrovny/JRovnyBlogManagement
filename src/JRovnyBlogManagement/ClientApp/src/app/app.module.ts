@@ -31,7 +31,6 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { ImageListComponent } from './components/image-list/image-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { httpInterceptorProviders } from './core/interceptors';
 import {
   BrowserCacheLocation,
   InteractionType,
