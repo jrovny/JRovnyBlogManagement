@@ -5,7 +5,6 @@ import { BrowserUtils } from '@azure/msal-browser';
 import { HomeComponent } from './components/home/home.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { PostListComponent } from './components/post-list/post-list.component';
-import { SilentCallbackComponent } from './components/silent-callback/silent-callback.component';
 
 const routes: Routes = [
   {
@@ -13,7 +12,6 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [MsalGuard],
     children: [
-      { path: 'silent-callback.html', component: SilentCallbackComponent },
       { path: 'posts', component: PostListComponent },
       { path: 'posts/:id', component: PostEditComponent },
     ],

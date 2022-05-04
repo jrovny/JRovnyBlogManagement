@@ -32,7 +32,6 @@ import { ImageListComponent } from './components/image-list/image-list.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { httpInterceptorProviders } from './core/interceptors';
-import { SilentCallbackComponent } from './components/silent-callback/silent-callback.component';
 import {
   BrowserCacheLocation,
   InteractionType,
@@ -94,8 +93,6 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ImageListComponent,
     NavbarComponent,
     HomeComponent,
-    SilentCallbackComponent,
-    // MsalRedirectComponent,
   ],
   imports: [
     BrowserModule,
