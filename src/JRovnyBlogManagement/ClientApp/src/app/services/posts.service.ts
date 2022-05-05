@@ -11,7 +11,7 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   getPosts() {
-    return this.http.get<Post[]>('/api/posts');
+    return this.http.get<Post[]>('https://localhost:7042/posts');
   }
 
   getPostById(id: number) {
