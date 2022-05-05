@@ -65,18 +65,17 @@ export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
 }
 
-// export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
-//   const protectedResourceMap = new Map<string, Array<string>>();
-//   // protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['https://jrovny.onmicrosoft.com/blog-api-dev/posts.all']); // Prod environment. Uncomment to use.
-//   protectedResourceMap.set('https://graph.microsoft-ppe.com/v1.0/me', [
-//     // 'https://jrovny.onmicrosoft.com/blog-api-dev/posts.all',
-//   ]);
+export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, Array<string>>();
+  protectedResourceMap.set('https://localhost:7042', [
+    'https://api.jrovny.com/Posts.All',
+  ]);
 
-//   return {
-//     interactionType: InteractionType.Redirect,
-//     protectedResourceMap,
-//   };
-// }
+  return {
+    interactionType: InteractionType.Redirect,
+    protectedResourceMap,
+  };
+}
 
 export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return {
@@ -132,10 +131,10 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
       provide: MSAL_GUARD_CONFIG,
       useFactory: MSALGuardConfigFactory,
     },
-    // {
-    //   provide: MSAL_INTERCEPTOR_CONFIG,
-    //   useFactory: MSALInterceptorConfigFactory,
-    // },
+    {
+      provide: MSAL_INTERCEPTOR_CONFIG,
+      useFactory: MSALInterceptorConfigFactory,
+    },
     MsalService,
     MsalGuard,
     MsalBroadcastService,
