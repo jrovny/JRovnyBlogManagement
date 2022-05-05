@@ -1,5 +1,6 @@
 ﻿using JRovnyBlogManagement.DesktopUI.Auth;
 using JRovnyBlogManagement.DesktopUI.Events;
+using JRovnyBlogManagement.DesktopUI.Features.Posts;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Microsoft.UI.Xaml;
@@ -17,11 +18,11 @@ namespace JRovnyBlogManagement.DesktopUI
         {
             InitializeComponent();
             ServiceCollection services = new();
-            ConfigureServices(services);
+            Services = ConfigureServices(services);
             _serviceProvider = services.BuildServiceProvider();
         }
 
-        private void ConfigureServices(ServiceCollection services)
+        private IServiceProvider ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton<AuthenticationService>();
             services.AddTransient<AccessTokenHandler>();
@@ -35,7 +36,13 @@ namespace JRovnyBlogManagement.DesktopUI
             }).AddHttpMessageHandler<AccessTokenHandler>();
             services.AddTransient<SplashScreenView>();
             services.AddTransient<MainWindow>();
+            services.AddTransient<PostsView>();
+
+            return services.BuildServiceProvider();
         }
+
+        public new static App Current => (App)Application.Current;
+        public IServiceProvider Services { get;  }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
