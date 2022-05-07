@@ -36,7 +36,7 @@ namespace JRovnyBlogManagement.DesktopUI
             }).AddHttpMessageHandler<AccessTokenHandler>();
             services.AddTransient<SplashScreenView>();
             services.AddTransient<MainWindow>();
-            services.AddTransient<PostsView>();
+            services.AddTransient<PostsViewModel>();
 
             return services.BuildServiceProvider();
         }

@@ -1,6 +1,6 @@
 ﻿using JRovnyBlogManagement.DesktopUI.Auth;
+using JRovnyBlogManagement.DesktopUI.Features.Posts;
 using Microsoft.UI.Xaml;
-using System.Collections.Generic;
 
 namespace JRovnyBlogManagement.DesktopUI
 {
@@ -14,10 +14,15 @@ namespace JRovnyBlogManagement.DesktopUI
             this._apiClient = apiClient;
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        //private async void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var results = await _apiClient.GetAsync<IEnumerable<PostSummary>>(
+        //        new System.Uri("/api/posts", System.UriKind.Relative));
+        //}
+
+        private void NavigationControl_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            var results = await _apiClient.GetAsync<IEnumerable<PostSummary>>(
-                new System.Uri("/api/posts", System.UriKind.Relative));
+            this.ContentFrame.Navigate(typeof(PostsViewPage), 1);
         }
     }
 }

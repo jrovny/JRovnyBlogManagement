@@ -7,12 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid>
-        <Button Content="Call API" Click="Button_Click"/>
-        <!--<NavigationView>
+        <NavigationView x:Name="NavigationControl" SelectionChanged="NavigationControl_SelectionChanged" >
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Posts"/>
-                <NavigationViewItem Content="Images"/>
             </NavigationView.MenuItems>
-        </NavigationView>-->
+            <Frame x:Name="ContentFrame"/>
+        </NavigationView>
     </Grid>
 </Window>

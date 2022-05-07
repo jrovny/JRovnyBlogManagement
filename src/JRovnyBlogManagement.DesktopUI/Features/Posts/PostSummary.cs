@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JRovnyBlogManagement.DesktopUI
+namespace JRovnyBlogManagement.DesktopUI.Features.Posts
 {
     public class PostSummary
     {
